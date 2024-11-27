@@ -11,7 +11,7 @@ namespace SkyControllerPP
 	{
 		// Token: 0x0600009C RID: 156
 		[HarmonyPrefix]
-		public static void Prefix(ICinematicData cinematicData)
+		public static void Prefix()
 		{
 			SkyInfo.Instance.Pest = false;
 			SkyInfo.Instance.War = false;
