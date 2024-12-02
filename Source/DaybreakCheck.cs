@@ -16,7 +16,7 @@ namespace SkyControllerPP
 		[HarmonyPrefix]
 		public static void Prefix(GameSimulation __instance, PlayCinematicMessage message)
 		{
-			if (ModStates.IsEnabled("curtis.tuba.better.tos2") && BTOSInfo.IS_MODDED && message.cinematicEntry.GetData().cinematicType == (CinematicType)100)
+			if (Utils.IsBTOS2() && message.cinematicEntry.GetData().cinematicType == (CinematicType)100)
 			{
 				SkyInfo.Phase = "Daybreak";
 			}
