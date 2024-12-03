@@ -1,0 +1,23 @@
+﻿using System;
+using Game.Simulation;
+using HarmonyLib;
+using Server.Shared.Messages;
+using Server.Shared.State;
+
+namespace SkyControllerPP
+{
+	// Token: 0x02000018 RID: 24
+	[HarmonyPatch(typeof(GameSimulation), "HandlePlayCinematic")]
+	public class DaybreakCheck
+	{
+		// Token: 0x06000093 RID: 147 RVA: 0x00002379 File Offset: 0x00000579
+		[HarmonyPrefix]
+		public static void Prefix(GameSimulation __instance, PlayCinematicMessage message)
+		{
+			if (Utils.IsBTOS2() && message.cinematicEntry.GetData().cinematicType == (CinematicType)100)
+			{
+				SkyInfo.Phase = "Daybreak";
+			}
+		}
+	}
+}
