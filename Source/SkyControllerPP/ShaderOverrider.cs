@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using HarmonyLib;
 using Server.Shared.State;
 using UnityEngine;
@@ -9,7 +9,7 @@ namespace SkyControllerPP
 	[HarmonyPatch(typeof(GlobalShaderColors), "ValidateColors")]
 	public class ShaderOverrider
 	{
-		// Token: 0x06000091 RID: 145 RVA: 0x00006148 File Offset: 0x00004348
+		// Token: 0x06000091 RID: 145
 		[HarmonyPostfix]
 		public static void Postfix(GlobalShaderColors __instance)
 		{
@@ -28,7 +28,10 @@ namespace SkyControllerPP
 				{
 					skyType = SkyInfo.GetSyncedSkyType();
 				}
-				SkyInfo.Instance.SetCurrentSkyType(skyType);
+				if (SkyInfo.Instance)
+				{
+					SkyInfo.Instance.SetCurrentSkyType(skyType);
+				}
 				if (__instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) && __instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal)
 				{
 					Color targetExteriorGlobalTintColor = __instance.targetExteriorGlobalTintColor;
@@ -49,7 +52,10 @@ namespace SkyControllerPP
 				{
 					skyType2 = SkyInfo.GetSyncedSkyType();
 				}
-				SkyInfo.Instance.SetCurrentSkyType(skyType2);
+				if (SkyInfo.Instance)
+				{
+					SkyInfo.Instance.SetCurrentSkyType(skyType2);
+				}
 				if (__instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) && __instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal)
 				{
 					Color targetExteriorGlobalTintColor2 = __instance.targetExteriorGlobalTintColor;
