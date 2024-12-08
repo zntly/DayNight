@@ -1,0 +1,10 @@
+{
+  "HarmonyId": "curtis.day.night.sync",
+  "DisplayName": "Sky Controller++",
+  "Authors": [ "Curtis", "Synapsium" ],
+  "Description": "A fix and improvement to Curtis's Sky Controller mod. Allows you to customize the sky on all your maps, with bonus settings such as syncing to realtime",
+  "Version": "3.0.0",
+  "RequiredMods": [],
+  "Discord": "https://discord.gg/AVRAVp2Vff",
+  "ModLib": false,
+}
