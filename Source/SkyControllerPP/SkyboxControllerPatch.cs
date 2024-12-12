@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using HarmonyLib;
 using Home.Shared;
@@ -9,54 +9,30 @@ namespace SkyControllerPP
 	[HarmonyPatch(typeof(SkyboxController), "Update")]
 	public class SkyboxControllerPatch
 	{
-		// Token: 0x0600004A RID: 74 RVA: 0x00004104 File Offset: 0x00002304
+		// Token: 0x0600004B RID: 75 RVA: 0x0000425C File Offset: 0x0000245C
 		[HarmonyPostfix]
 		public static void Postfix(SkyboxController __instance)
 		{
-			if (__instance.isActiveAndEnabled && !SkyboxControllerPatch.Last)
+			if (SkyInfo.Already != __instance)
 			{
-				if (!(ApplicationController.ApplicationContext.navigationController == null) && (ApplicationController.ApplicationContext.navigationController.IsSceneLoaded(SceneType.GAME) || ApplicationController.ApplicationContext.navigationController.IsSceneLoaded(SceneType.GAME_BASE)))
+				SkyInfo.Already = __instance;
+				if (Leo.IsGameScene())
 				{
 					SkyInfo.Instance = __instance.gameObject.AddComponent<SkyControllerPlus>();
 					SkyInfo.Phase = "Day";
+					return;
 				}
-				else
-				{
-					SkyInfo.Instance = __instance.gameObject.AddComponent<SkyControllerPlus>();
-					SkyInfo.Instance.Famine = false;
-					SkyInfo.Instance.Pest = false;
-					SkyInfo.Instance.War = false;
-					SkyInfo.Instance.Death = false;
-					SkyInfo.Phase = "NotGame";
-					ApplicationController.ApplicationContext.StartCoroutine(SkyboxControllerPatch.SetSkyShader());
-				}
+				SkyInfo.Instance = __instance.gameObject.AddComponent<SkyControllerPlus>();
+				SkyInfo.Phase = "NotGame";
+				ApplicationController.ApplicationContext.StartCoroutine(SkyboxControllerPatch.SetSkyShader());
 			}
-			SkyboxControllerPatch.Last = (__instance.isActiveAndEnabled && SkyInfo.Instance != null);
-			if (SkyboxControllerPatch.LastScene != null && SkyboxControllerPatch.LastScene != ApplicationController.ApplicationContext.navigationController.CurrentSceneName)
-			{
-				if (ApplicationController.ApplicationContext.navigationController.IsSceneLoaded(SceneType.GAME) || ApplicationController.ApplicationContext.navigationController.IsSceneLoaded(SceneType.GAME_BASE))
-				{
-					SkyInfo.Phase = "Day";
-					SkyInfo.Instance.UpdateSky();
-				}
-				else
-				{
-					SkyInfo.Instance.Famine = false;
-					SkyInfo.Instance.Pest = false;
-					SkyInfo.Instance.War = false;
-					SkyInfo.Instance.Death = false;
-					SkyInfo.Phase = "NotGame";
-					ApplicationController.ApplicationContext.StartCoroutine(SkyboxControllerPatch.SetSkyShader());
-				}
-			}
-			SkyboxControllerPatch.LastScene = ApplicationController.ApplicationContext.navigationController.CurrentSceneName;
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x000020D4 File Offset: 0x000002D4
+		// Token: 0x0600004D RID: 77 RVA: 0x000020D4 File Offset: 0x000002D4
 		private static IEnumerator SetSkyShader()
 		{
 			yield return null;
-			if (!(ApplicationController.ApplicationContext.navigationController == null) && ApplicationController.ApplicationContext.navigationController.IsSceneLoaded(SceneType.HOME))
+			if (Leo.IsHomeScene())
 			{
 				switch (SkyInfo.Instance.GetCurrentSkyType())
 				{
@@ -90,10 +66,10 @@ namespace SkyControllerPP
 			yield break;
 		}
 
-		// Token: 0x04000023 RID: 35
+		// Token: 0x04000024 RID: 36
 		public static bool Last;
 
-		// Token: 0x04000024 RID: 36
+		// Token: 0x04000025 RID: 37
 		public static string LastScene;
 	}
 }
