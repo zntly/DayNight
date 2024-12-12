@@ -1,9 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Home.Shared;
 using Server.Shared.Extensions;
+using Services;
 using SML;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SkyControllerPP
 {
@@ -11,7 +14,7 @@ namespace SkyControllerPP
 	[Mod.SalemMod]
 	public class Main
 	{
-		// Token: 0x06000044 RID: 68 RVA: 0x00003F08 File Offset: 0x00002108
+		// Token: 0x06000044 RID: 68 RVA: 0x00003F20 File Offset: 0x00002120
 		public void Start()
 		{
 			AssetBundle assetBundleFromResources = FromAssetBundle.GetAssetBundleFromResources("SkyControllerPP.resources.assetbundles.daynight", Assembly.GetExecutingAssembly());
@@ -66,6 +69,48 @@ namespace SkyControllerPP
 			catch
 			{
 			}
+			Service.Home.ApplicationService.OnSceneLoaded += delegate(SceneType sceneType, LoadSceneMode loadSceneMode)
+			{
+				if (SkyInfo.Instance)
+				{
+					if (Leo.IsHomeScene())
+					{
+						SkyInfo.Phase = "NotGame";
+						switch (SkyInfo.Instance.GetCurrentSkyType())
+						{
+						case SkyInfo.SkyType.Day:
+							SkyInfo.Instance.UpdateIntroClouds("Day");
+							break;
+						case SkyInfo.SkyType.Night:
+							SkyInfo.Instance.UpdateIntroClouds("Night");
+							break;
+						case SkyInfo.SkyType.Dawn:
+							SkyInfo.Instance.UpdateIntroClouds("Dawn");
+							break;
+						case SkyInfo.SkyType.Dusk:
+							SkyInfo.Instance.UpdateIntroClouds("Dawn");
+							break;
+						case SkyInfo.SkyType.BloodMoon:
+							SkyInfo.Instance.UpdateIntroClouds("BloodMoon");
+							break;
+						case SkyInfo.SkyType.Storm:
+							SkyInfo.Instance.UpdateIntroClouds("Storm");
+							break;
+						case SkyInfo.SkyType.Eclipse:
+							SkyInfo.Instance.UpdateIntroClouds("Invis");
+							break;
+						case SkyInfo.SkyType.Winter:
+							SkyInfo.Instance.UpdateIntroClouds("Invis");
+							break;
+						}
+					}
+					else if (Leo.IsGameScene())
+					{
+						SkyInfo.Phase = "Day";
+					}
+					SkyInfo.Instance.UpdateSky();
+				}
+			};
 		}
 
 		// Token: 0x04000020 RID: 32
