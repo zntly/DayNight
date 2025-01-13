@@ -13,7 +13,6 @@ namespace SkyControllerPP
 		public static void Prefix(GlobalShaderColors __instance)
 		{
 			SkyInfo.Phase = "Night";
-			Service.Game.Sim.simulation.SetDeathNote("some test death note that logically shouldn't be shown because this role does not have a death note");
 		}
 	}
 }
