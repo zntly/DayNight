@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using HarmonyLib;
 using Server.Shared.State;
 using SML;
@@ -10,123 +10,104 @@ namespace SkyControllerPP
 	[HarmonyPatch(typeof(GlobalShaderColors), "ValidateColors")]
 	public class ShaderOverrider
 	{
-		// Token: 0x06000036 RID: 54 RVA: 0x0000425C File Offset: 0x0000245C
+		// Token: 0x06000036 RID: 54
 		[HarmonyPostfix]
 		public static void Postfix(GlobalShaderColors __instance)
 		{
-			bool flag = Utils.IsBTOS2();
-			if (flag)
+			if (Utils.IsBTOS2())
 			{
-				bool flag2 = SkyInfo.Phase != "Daybreak" && Utils.CourtCheck();
-				if (flag2)
+				if (SkyInfo.Phase != "Daybreak" && Utils.CourtCheck())
 				{
 					SkyInfo.Phase = "Court";
 				}
 				SkyInfo.SkyType skyType = SkyInfo.GetCurrentPermSkyType();
-				bool flag3 = SkyInfo.Phase != "Tribunal" && SkyInfo.Phase != "Court" && SkyInfo.Phase != "Daybreak" && (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War);
-				if (flag3)
+				if (SkyInfo.Phase != "Tribunal" && SkyInfo.Phase != "Court" && SkyInfo.Phase != "Daybreak" && (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War))
 				{
 					skyType = SkyInfo.GetCurrentApocSkyType();
 				}
-				bool flag4 = skyType == SkyInfo.SkyType.None;
-				if (flag4)
+				if (skyType == SkyInfo.SkyType.None)
 				{
 					skyType = SkyInfo.GetSyncedSkyType();
 				}
-				bool flag5 = SkyInfo.Instance && SkyInfo.CurrentActive != skyType;
-				if (flag5)
+				if (SkyInfo.Instance && SkyInfo.CurrentActive != skyType)
 				{
 					SkyInfo.Instance.SetCurrentSkyType(skyType);
-					bool flag6 = Main.Snowflakes != null;
-					if (flag6)
+					if (Main.Snowflakes != null)
 					{
-						bool @bool = ModSettings.GetBool("Color Snowflakes to Shader Color (Winter Map)");
-						if (@bool)
+						if (ModSettings.GetBool("Color Snowflakes to Shader Color (Winter Map)"))
 						{
-							bool flag7 = Main.Snowflakes.startColor != SkyInfo.GetSkyColor(skyType);
+							bool flag = Main.Snowflakes.startColor != SkyInfo.GetSkyColor(skyType);
 							Main.Snowflakes.startColor = SkyInfo.GetSkyColor(skyType);
-							bool flag8 = flag7;
-							if (flag8)
+							if (flag)
 							{
 								Main.Snowflakes.Clear();
 								Main.Snowflakes.Emit(250);
 							}
 							return;
 						}
-						bool flag9 = Main.Snowflakes.startColor != new Color(1f, 1f, 1f, 1f);
+						bool flag2 = Main.Snowflakes.startColor != new Color(1f, 1f, 1f, 1f);
 						Main.Snowflakes.startColor = new Color(1f, 1f, 1f, 1f);
-						bool flag10 = flag9;
-						if (flag10)
+						if (flag2)
 						{
 							Main.Snowflakes.Clear();
 							Main.Snowflakes.Emit(250);
 						}
 					}
 				}
-				bool flag11 = __instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) && __instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal;
-				if (flag11)
+				if (__instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) && (__instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal || __instance.cinematicPlayer.cinematicType == CinematicType.HexBomb || __instance.cinematicPlayer.cinematicType == CinematicType.None))
 				{
 					Color targetExteriorGlobalTintColor = __instance.targetExteriorGlobalTintColor;
 					__instance.targetExteriorGlobalTintColor = targetExteriorGlobalTintColor * SkyInfo.GetSkyColor(skyType);
+					return;
 				}
-				else
-				{
-					__instance.targetExteriorGlobalTintColor = SkyInfo.GetSkyColor(skyType);
-				}
+				__instance.targetExteriorGlobalTintColor = SkyInfo.GetSkyColor(skyType);
+				return;
 			}
 			else
 			{
 				SkyInfo.SkyType skyType2 = SkyInfo.GetCurrentPermSkyType();
-				bool flag12 = SkyInfo.Phase != "Tribunal" && (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War);
-				if (flag12)
+				if (SkyInfo.Phase != "Tribunal" && (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War))
 				{
 					skyType2 = SkyInfo.GetCurrentApocSkyType();
 				}
-				bool flag13 = skyType2 == SkyInfo.SkyType.None;
-				if (flag13)
+				if (skyType2 == SkyInfo.SkyType.None)
 				{
 					skyType2 = SkyInfo.GetSyncedSkyType();
 				}
-				bool flag14 = SkyInfo.Instance && SkyInfo.CurrentActive != skyType2;
-				if (flag14)
+				if (SkyInfo.Instance && SkyInfo.CurrentActive != skyType2)
 				{
 					SkyInfo.Instance.SetCurrentSkyType(skyType2);
-					bool flag15 = Main.Snowflakes != null;
-					if (flag15)
+					if (Main.Snowflakes != null)
 					{
-						bool bool2 = ModSettings.GetBool("Color Snowflakes to Shader Color (Winter Map)");
-						if (bool2)
+						if (ModSettings.GetBool("Color Snowflakes to Shader Color (Winter Map)"))
 						{
-							bool flag16 = Main.Snowflakes.startColor != SkyInfo.GetSkyColor(skyType2);
+							bool flag3 = Main.Snowflakes.startColor != SkyInfo.GetSkyColor(skyType2);
 							Main.Snowflakes.startColor = SkyInfo.GetSkyColor(skyType2);
-							bool flag17 = flag16;
-							if (flag17)
+							if (flag3)
 							{
 								Main.Snowflakes.Clear();
 								Main.Snowflakes.Emit(250);
 							}
 							return;
 						}
-						bool flag18 = Main.Snowflakes.startColor != new Color(1f, 1f, 1f, 1f);
+						bool flag4 = Main.Snowflakes.startColor != new Color(1f, 1f, 1f, 1f);
 						Main.Snowflakes.startColor = new Color(1f, 1f, 1f, 1f);
-						bool flag19 = flag18;
-						if (flag19)
+						if (flag4)
 						{
 							Main.Snowflakes.Clear();
 							Main.Snowflakes.Emit(250);
 						}
 					}
 				}
-				bool flag20 = __instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) && __instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal;
-				if (flag20)
+				if (__instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) && (__instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal || __instance.cinematicPlayer.cinematicType == CinematicType.HexBomb))
 				{
+					Debug.LogWarning(__instance.cinematicPlayer.cinematicType);
 					Color targetExteriorGlobalTintColor2 = __instance.targetExteriorGlobalTintColor;
 					__instance.targetExteriorGlobalTintColor = targetExteriorGlobalTintColor2 * SkyInfo.GetSkyColor(skyType2);
+					return;
 				}
-				else
-				{
-					__instance.targetExteriorGlobalTintColor = SkyInfo.GetSkyColor(skyType2);
-				}
+				__instance.targetExteriorGlobalTintColor = SkyInfo.GetSkyColor(skyType2);
+				return;
 			}
 		}
 	}
