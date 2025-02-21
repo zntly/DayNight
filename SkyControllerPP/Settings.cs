@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SML;
 using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x0200000C RID: 12
+	// Token: 0x0200000D RID: 13
 	[DynamicSettings]
 	public class Settings
 	{
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000012 RID: 18 RVA: 0x00002668 File Offset: 0x00000868
+		// (get) Token: 0x06000016 RID: 22
 		public ModSettings.TextInputSetting NightStart
 		{
 			get
@@ -22,7 +22,7 @@ namespace SkyControllerPP
 				textInputSetting.Regex = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
 				textInputSetting.CharacterLimit = 5;
 				textInputSetting.AvailableInGame = true;
-				textInputSetting.Available = true;
+				textInputSetting.Available = (ModSettings.GetString("Default Skybox") == "None");
 				textInputSetting.OnChanged = delegate(string s)
 				{
 					Settings.UpdateSky();
@@ -32,7 +32,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000013 RID: 19 RVA: 0x000026E8 File Offset: 0x000008E8
+		// (get) Token: 0x06000017 RID: 23
 		public ModSettings.TextInputSetting NightEnd
 		{
 			get
@@ -44,7 +44,7 @@ namespace SkyControllerPP
 				textInputSetting.Regex = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
 				textInputSetting.CharacterLimit = 5;
 				textInputSetting.AvailableInGame = true;
-				textInputSetting.Available = true;
+				textInputSetting.Available = (ModSettings.GetString("Default Skybox") == "None");
 				textInputSetting.OnChanged = delegate(string s)
 				{
 					Settings.UpdateSky();
@@ -54,7 +54,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000014 RID: 20 RVA: 0x00002768 File Offset: 0x00000968
+		// (get) Token: 0x06000018 RID: 24
 		public ModSettings.IntegerInputSetting DawnDuskLength
 		{
 			get
@@ -66,7 +66,7 @@ namespace SkyControllerPP
 				integerInputSetting.MinValue = 0;
 				integerInputSetting.MaxValue = 1440;
 				integerInputSetting.AvailableInGame = true;
-				integerInputSetting.Available = true;
+				integerInputSetting.Available = (ModSettings.GetString("Default Skybox") == "None");
 				integerInputSetting.OnChanged = delegate(int s)
 				{
 					Settings.UpdateSky();
@@ -76,7 +76,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000015 RID: 21 RVA: 0x000027E4 File Offset: 0x000009E4
+		// (get) Token: 0x06000019 RID: 25
 		public ModSettings.ColorPickerSetting DayShaderColor
 		{
 			get
@@ -96,7 +96,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000016 RID: 22 RVA: 0x0000295C File Offset: 0x00000B5C
+		// (get) Token: 0x0600001A RID: 26
 		public ModSettings.ColorPickerSetting NightShaderColor
 		{
 			get
@@ -116,7 +116,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x06000017 RID: 23 RVA: 0x00002AD4 File Offset: 0x00000CD4
+		// (get) Token: 0x0600001B RID: 27
 		public ModSettings.ColorPickerSetting DawnShaderColor
 		{
 			get
@@ -136,7 +136,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000018 RID: 24 RVA: 0x00002C4C File Offset: 0x00000E4C
+		// (get) Token: 0x0600001C RID: 28
 		public ModSettings.ColorPickerSetting DuskShaderColor
 		{
 			get
@@ -156,7 +156,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000019 RID: 25 RVA: 0x00002DC4 File Offset: 0x00000FC4
+		// (get) Token: 0x0600001D RID: 29
 		public ModSettings.ColorPickerSetting BloodMoonShaderColor
 		{
 			get
@@ -176,7 +176,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600001A RID: 26 RVA: 0x00002F3C File Offset: 0x0000113C
+		// (get) Token: 0x0600001E RID: 30
 		public ModSettings.ColorPickerSetting StormShaderColor
 		{
 			get
@@ -196,7 +196,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600001B RID: 27 RVA: 0x000030B4 File Offset: 0x000012B4
+		// (get) Token: 0x0600001F RID: 31
 		public ModSettings.ColorPickerSetting EclipseShaderColor
 		{
 			get
@@ -216,7 +216,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x0600001C RID: 28 RVA: 0x0000322C File Offset: 0x0000142C
+		// (get) Token: 0x06000020 RID: 32
 		public ModSettings.ColorPickerSetting WinterShaderColor
 		{
 			get
@@ -236,7 +236,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x0600001D RID: 29 RVA: 0x000033A4 File Offset: 0x000015A4
+		// (get) Token: 0x06000021 RID: 33
 		public ModSettings.DropdownSetting SetDefaultSky
 		{
 			get
@@ -256,7 +256,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x0600001E RID: 30 RVA: 0x00003414 File Offset: 0x00001614
+		// (get) Token: 0x06000022 RID: 34
 		public ModSettings.DropdownSetting SetDaySky
 		{
 			get
@@ -276,7 +276,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x0600001F RID: 31 RVA: 0x00003484 File Offset: 0x00001684
+		// (get) Token: 0x06000023 RID: 35
 		public ModSettings.DropdownSetting SetNightSky
 		{
 			get
@@ -296,7 +296,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000020 RID: 32 RVA: 0x000034F4 File Offset: 0x000016F4
+		// (get) Token: 0x06000024 RID: 36
 		public ModSettings.DropdownSetting SetApocSky
 		{
 			get
@@ -315,18 +315,17 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00003564 File Offset: 0x00001764
+		// Token: 0x06000025 RID: 37
 		public static void UpdateSky()
 		{
-			bool flag = !(SkyInfo.Instance == null);
-			if (flag)
+			if (!(SkyInfo.Instance == null))
 			{
 				SkyInfo.Instance.UpdateSky();
 			}
 		}
 
 		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x06000022 RID: 34 RVA: 0x00003594 File Offset: 0x00001794
+		// (get) Token: 0x06000026 RID: 38
 		public ModSettings.ColorPickerSetting DayShaderColorNight
 		{
 			get
@@ -346,7 +345,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x06000023 RID: 35 RVA: 0x000036B4 File Offset: 0x000018B4
+		// (get) Token: 0x06000027 RID: 39
 		public ModSettings.ColorPickerSetting NightShaderColorNight
 		{
 			get
@@ -366,7 +365,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000024 RID: 36 RVA: 0x000037D4 File Offset: 0x000019D4
+		// (get) Token: 0x06000028 RID: 40
 		public ModSettings.ColorPickerSetting DawnShaderColorNight
 		{
 			get
@@ -386,7 +385,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000025 RID: 37 RVA: 0x000038F4 File Offset: 0x00001AF4
+		// (get) Token: 0x06000029 RID: 41
 		public ModSettings.ColorPickerSetting DuskShaderColorNight
 		{
 			get
@@ -406,7 +405,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000026 RID: 38 RVA: 0x00003A14 File Offset: 0x00001C14
+		// (get) Token: 0x0600002A RID: 42
 		public ModSettings.ColorPickerSetting BloodMoonShaderColorNight
 		{
 			get
@@ -426,7 +425,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000027 RID: 39 RVA: 0x00003B34 File Offset: 0x00001D34
+		// (get) Token: 0x0600002B RID: 43
 		public ModSettings.ColorPickerSetting StormShaderColorNight
 		{
 			get
@@ -446,7 +445,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x06000028 RID: 40 RVA: 0x00003C54 File Offset: 0x00001E54
+		// (get) Token: 0x0600002C RID: 44
 		public ModSettings.ColorPickerSetting EclipseShaderColorNight
 		{
 			get
@@ -466,7 +465,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000029 RID: 41 RVA: 0x00003D74 File Offset: 0x00001F74
+		// (get) Token: 0x0600002D RID: 45
 		public ModSettings.ColorPickerSetting WinterShaderColorNight
 		{
 			get
@@ -486,7 +485,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x0600002A RID: 42 RVA: 0x00003E94 File Offset: 0x00002094
+		// (get) Token: 0x0600002E RID: 46
 		public ModSettings.DropdownSetting SetTribunalSky
 		{
 			get
@@ -506,7 +505,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x0600002B RID: 43 RVA: 0x00003F04 File Offset: 0x00002104
+		// (get) Token: 0x0600002F RID: 47
 		public ModSettings.DropdownSetting SetCourtSky
 		{
 			get
@@ -525,14 +524,14 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00003F78 File Offset: 0x00002178
+		// Token: 0x06000030 RID: 48
 		public static bool IsBTOS2()
 		{
 			return ModStates.IsEnabled("curtis.tuba.better.tos2");
 		}
 
 		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x0600002D RID: 45 RVA: 0x00003F94 File Offset: 0x00002194
+		// (get) Token: 0x06000031 RID: 49
 		public ModSettings.DropdownSetting SetDaybreakSky
 		{
 			get
@@ -552,7 +551,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x0600002E RID: 46 RVA: 0x00004008 File Offset: 0x00002208
+		// (get) Token: 0x06000032 RID: 50
 		public ModSettings.DropdownSetting SetDawnSky
 		{
 			get
@@ -572,7 +571,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x0600002F RID: 47 RVA: 0x0000408C File Offset: 0x0000228C
+		// (get) Token: 0x06000033 RID: 51
 		public ModSettings.DropdownSetting SetDuskSky
 		{
 			get
@@ -592,7 +591,7 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x06000030 RID: 48 RVA: 0x00004110 File Offset: 0x00002310
+		// (get) Token: 0x06000034 RID: 52
 		public ModSettings.CheckboxSetting ColorSnowflakes
 		{
 			get
@@ -609,7 +608,7 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x04000007 RID: 7
+		// Token: 0x0400000A RID: 10
 		private readonly List<string> AvailableSkyboxes = new List<string>(10)
 		{
 			"None",
