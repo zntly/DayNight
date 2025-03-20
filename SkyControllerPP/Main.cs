@@ -58,8 +58,12 @@ namespace SkyControllerPP
 			catch
 			{
 			}
-			this.Corotine = this.RandomSkyWaitCoroutine();
-			ApplicationController.ApplicationContext.StartCoroutine(this.Corotine);
+			try
+			{
+				this.Corotine = this.RandomSkyWaitCoroutine();
+				ApplicationController.ApplicationContext.StartCoroutine(this.Corotine);
+			}
+			catch { }
 			Service.Home.ApplicationService.OnSceneLoaded += delegate(SceneType sceneType, LoadSceneMode loadSceneMode)
 			{
 				if (Main.Snowflakes == null && (sceneType == SceneType.MAP || sceneType == SceneType.GAME) && Service.Home.Customizations.myCustomizationSelections.Data.mapId == 2)
@@ -124,7 +128,7 @@ namespace SkyControllerPP
 			for (;;)
 			{
 				yield return new WaitForSeconds((float)Settings.SettingsCache.GetValue("Random Sky Wait in Seconds", null));
-				if ((string)Settings.SettingsCache.GetValue("Random Sky Mode", null) == "Time in Seconds" && SkyInfo.Instance)
+				if ((string)Settings.SettingsCache.GetValue("Random Sky Mode", null) == "Time in Seconds" && SkyInfo.Instance != null)
 				{
 					Settings.SettingsCache.SetValue("Current Random Sky", SkyInfo.Instance.RandomSkyTypeAsString());
 					if (Leo.IsHomeScene())
