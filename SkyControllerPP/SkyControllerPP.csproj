@@ -74,6 +74,7 @@
     <Compile Include="Microsoft\CodeAnalysis\EmbeddedAttribute.cs" />
     <Compile Include="MyPluginInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+	<Compile Include="RandomSkyPhaseChange.cs" />
     <Compile Include="ResetAll.cs" />
     <Compile Include="RevertApocalypse.cs" />
     <Compile Include="Settings.cs" />

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x02000018 RID: 24
+	// Token: 0x0200001A RID: 26
 	public class SkyInfo
 	{
-		// Token: 0x0600009F RID: 159
+		// Token: 0x060000B2 RID: 178 RVA: 0x00007CC8 File Offset: 0x00005EC8
 		public static SkyInfo.SkyType StringToSkyType(string s)
 		{
 			if (s != null)
@@ -94,7 +94,7 @@ namespace SkyControllerPP
 			return SkyInfo.SkyType.None;
 		}
 
-		// Token: 0x060000A0 RID: 160
+		// Token: 0x060000B3 RID: 179 RVA: 0x00007E04 File Offset: 0x00006004
 		public static SkyInfo.SkyType GetCurrentPermSkyType()
 		{
 			SkyInfo.SkyType result;
@@ -141,7 +141,7 @@ namespace SkyControllerPP
 			return result;
 		}
 
-		// Token: 0x060000A1 RID: 161
+		// Token: 0x060000B4 RID: 180 RVA: 0x000081FC File Offset: 0x000063FC
 		public static SkyInfo.SkyType GetSyncedSkyType()
 		{
 			SkyInfo.SkyType result;
@@ -189,23 +189,23 @@ namespace SkyControllerPP
 			return result;
 		}
 
-		// Token: 0x060000A2 RID: 162
+		// Token: 0x060000B5 RID: 181 RVA: 0x00008350 File Offset: 0x00006550
 		public static SkyInfo.SkyType GetCurrentApocSkyType()
 		{
-			string @string = (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null);
+			string text = (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null);
 			SkyInfo.SkyType result;
-			if (@string == "None")
+			if (text == "None")
 			{
 				result = SkyInfo.GetCurrentPermSkyType();
 			}
 			else
 			{
-				result = SkyInfo.StringToSkyType(@string);
+				result = SkyInfo.StringToSkyType(text);
 			}
 			return result;
 		}
 
-		// Token: 0x060000A3 RID: 163
+		// Token: 0x060000B6 RID: 182 RVA: 0x00008390 File Offset: 0x00006590
 		public static Color GetSkyColor(SkyInfo.SkyType skyType)
 		{
 			switch (skyType)
@@ -305,47 +305,47 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x0400005A RID: 90
+		// Token: 0x04000063 RID: 99
 		public static SkyControllerPlus Instance = new SkyControllerPlus();
 
-		// Token: 0x0400005B RID: 91
+		// Token: 0x04000064 RID: 100
 		public static string Phase = "NotGame";
 
-		// Token: 0x0400005C RID: 92
+		// Token: 0x04000065 RID: 101
 		public static string TOD = "Day";
 
-		// Token: 0x0400005D RID: 93
+		// Token: 0x04000066 RID: 102
 		public static SkyboxController Already;
 
-		// Token: 0x0400005E RID: 94
+		// Token: 0x04000067 RID: 103
 		public static SkyInfo.SkyType CurrentActive;
 
-		// Token: 0x02000019 RID: 25
+		// Token: 0x0200001B RID: 27
 		public enum SkyType
 		{
-			// Token: 0x04000060 RID: 96
-			None,
-			// Token: 0x04000061 RID: 97
-			Random,
-			// Token: 0x04000062 RID: 98
-			Day,
-			// Token: 0x04000063 RID: 99
-			Night,
-			// Token: 0x04000064 RID: 100
-			Dawn,
-			// Token: 0x04000065 RID: 101
-			Dusk,
-			// Token: 0x04000066 RID: 102
-			BloodMoon,
-			// Token: 0x04000067 RID: 103
-			Storm,
-			// Token: 0x04000068 RID: 104
-			Eclipse,
 			// Token: 0x04000069 RID: 105
-			Winter,
+			None,
 			// Token: 0x0400006A RID: 106
-			Void = 11,
+			Random,
 			// Token: 0x0400006B RID: 107
+			Day,
+			// Token: 0x0400006C RID: 108
+			Night,
+			// Token: 0x0400006D RID: 109
+			Dawn,
+			// Token: 0x0400006E RID: 110
+			Dusk,
+			// Token: 0x0400006F RID: 111
+			BloodMoon,
+			// Token: 0x04000070 RID: 112
+			Storm,
+			// Token: 0x04000071 RID: 113
+			Eclipse,
+			// Token: 0x04000072 RID: 114
+			Winter,
+			// Token: 0x04000073 RID: 115
+			Void = 11,
+			// Token: 0x04000074 RID: 116
 			Greek = 10
 		}
 	}

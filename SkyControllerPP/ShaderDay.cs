@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x0200000F RID: 15
+	// Token: 0x02000011 RID: 17
 	[HarmonyPatch(typeof(GlobalShaderColors), "SetToDay")]
 	public class ShaderDay
 	{
-		// Token: 0x06000060 RID: 96
+		// Token: 0x06000072 RID: 114
 		[HarmonyPrefix]
 		public static void Prefix(GlobalShaderColors __instance)
 		{
@@ -24,6 +24,10 @@ namespace SkyControllerPP
 				if (skyType == SkyInfo.SkyType.None)
 				{
 					skyType = SkyInfo.GetSyncedSkyType();
+				}
+				if (skyType == SkyInfo.SkyType.Random)
+				{
+					skyType = (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
 				}
 				if (SkyInfo.Instance && SkyInfo.CurrentActive == skyType && Main.Snowflakes != null)
 				{

@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x02000010 RID: 16
+	// Token: 0x02000012 RID: 18
 	[HarmonyPatch(typeof(GlobalShaderColors), "SetToNight")]
 	public class ShaderNight
 	{
-		// Token: 0x06000062 RID: 98
+		// Token: 0x06000074 RID: 116
 		[HarmonyPrefix]
 		public static void Prefix(GlobalShaderColors __instance)
 		{
@@ -25,6 +25,10 @@ namespace SkyControllerPP
 				{
 					skyType = SkyInfo.GetSyncedSkyType();
 				}
+				if (skyType == SkyInfo.SkyType.Random)
+				{
+					skyType = (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
+				}
 				Color skyColor = SkyInfo.GetSkyColor(skyType);
 				if (skyColor != JailCellShader.lastcolor)
 				{
@@ -39,6 +43,10 @@ namespace SkyControllerPP
 			if (skyType2 == SkyInfo.SkyType.None)
 			{
 				skyType2 = SkyInfo.GetSyncedSkyType();
+			}
+			if (skyType2 == SkyInfo.SkyType.Random)
+			{
+				skyType2 = (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
 			}
 			if (SkyInfo.Instance && SkyInfo.CurrentActive == skyType2 && Main.Snowflakes != null)
 			{

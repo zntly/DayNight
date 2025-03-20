@@ -11,7 +11,7 @@ namespace SkyControllerPP
 	[HarmonyPatch(typeof(TransformGameMessageDecoder), "Encode")]
 	public class ApocalypseSwap
 	{
-		// Token: 0x06000003 RID: 3 RVA: 0x000022B8 File Offset: 0x000004B8
+		// Token: 0x06000003 RID: 3 RVA: 0x00002434 File Offset: 0x00000634
 		[HarmonyPostfix]
 		public static void Postfix(ChatLogMessage chatLogMessage)
 		{

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x02000015 RID: 21
+	// Token: 0x02000017 RID: 23
 	public class SkyControllerPlus : MonoBehaviour
 	{
-		// Token: 0x06000075 RID: 117
+		// Token: 0x06000087 RID: 135
 		private void Start()
 		{
 			SkyInfo.SkyType currentSkyType = this.GetCurrentSkyType();
@@ -78,7 +78,7 @@ namespace SkyControllerPP
 			this.SetCurrentSkyType(currentSkyType);
 		}
 
-		// Token: 0x06000076 RID: 118
+		// Token: 0x06000088 RID: 136
 		private void Setup()
 		{
 			this.daySkybox = base.gameObject.transform.Find("Skybox_D").gameObject;
@@ -147,7 +147,7 @@ namespace SkyControllerPP
 			UnityEngine.Object.Destroy(base.gameObject.transform.Find("Skybox_N").gameObject);
 		}
 
-		// Token: 0x06000077 RID: 119
+		// Token: 0x06000089 RID: 137
 		private void BuildDaySky()
 		{
 			this.dayDecor = base.transform.Find("Day").gameObject;
@@ -165,7 +165,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Day");
 		}
 
-		// Token: 0x06000078 RID: 120
+		// Token: 0x0600008A RID: 138
 		private void BuildNightSky()
 		{
 			this.nightDecor = base.transform.Find("Night").gameObject;
@@ -178,7 +178,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Night");
 		}
 
-		// Token: 0x06000079 RID: 121
+		// Token: 0x0600008B RID: 139
 		private void BuildDuskSky()
 		{
 			this.duskDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Day").gameObject, base.transform);
@@ -193,7 +193,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Dawn");
 		}
 
-		// Token: 0x0600007A RID: 122
+		// Token: 0x0600008C RID: 140
 		private void BuildDawnSky()
 		{
 			this.dawnDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Day").gameObject, base.transform);
@@ -213,7 +213,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Dawn");
 		}
 
-		// Token: 0x0600007B RID: 123
+		// Token: 0x0600008D RID: 141
 		private void BuildBloodMoonSky()
 		{
 			this.bloodDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Night").gameObject, base.transform);
@@ -228,7 +228,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("BloodMoon");
 		}
 
-		// Token: 0x0600007C RID: 124
+		// Token: 0x0600008E RID: 142
 		private void BuildStormSky()
 		{
 			this.stormDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Day").gameObject, base.transform);
@@ -248,7 +248,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Storm");
 		}
 
-		// Token: 0x0600007D RID: 125
+		// Token: 0x0600008F RID: 143
 		private void BuildEclipseSky()
 		{
 			this.eclipseDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Night").gameObject, base.transform);
@@ -275,7 +275,7 @@ namespace SkyControllerPP
 			UnityEngine.Object.Destroy(this.eclipseDecor.transform.Find("MoonCloud").gameObject);
 		}
 
-		// Token: 0x0600007E RID: 126
+		// Token: 0x06000090 RID: 144
 		private void BuildWinterSky()
 		{
 			this.winterDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Day").gameObject, base.transform);
@@ -290,7 +290,7 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Invis");
 		}
 
-		// Token: 0x0600007F RID: 127
+		// Token: 0x06000091 RID: 145
 		private void SetCloudType(SpriteRenderer s, string type)
 		{
 			if (s != null)
@@ -325,7 +325,7 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x06000080 RID: 128
+		// Token: 0x06000092 RID: 146
 		public void SetCurrentSkyType(SkyInfo.SkyType skyType)
 		{
 			switch (SkyInfo.CurrentActive)
@@ -411,7 +411,7 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x06000081 RID: 129
+		// Token: 0x06000093 RID: 147
 		public void SetSkyShader(SkyInfo.SkyType skyType)
 		{
 			GameObject gameObject = GameObject.Find("ShaderColors");
@@ -447,13 +447,13 @@ namespace SkyControllerPP
 			JailCellShader.ShadeCell(SkyInfo.GetSkyColor(skyType));
 		}
 
-		// Token: 0x06000082 RID: 130
+		// Token: 0x06000094 RID: 148
 		public SkyInfo.SkyType RandomSkyType()
 		{
 			return (SkyInfo.SkyType)new System.Random().Next(2, 11);
 		}
 
-		// Token: 0x06000083 RID: 131
+		// Token: 0x06000095 RID: 149
 		private void SetMoon(SkyInfo.SkyType skyType)
 		{
 			if (skyType != SkyInfo.SkyType.Night)
@@ -481,7 +481,7 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x06000084 RID: 132
+		// Token: 0x06000096 RID: 150
 		public SkyInfo.SkyType GetCurrentSkyType()
 		{
 			SkyInfo.SkyType skyType = SkyInfo.GetCurrentPermSkyType();
@@ -542,12 +542,12 @@ namespace SkyControllerPP
 			}
 			if (skyType == SkyInfo.SkyType.Random)
 			{
-				skyType = this.RandomSkyType();
+				skyType = (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
 			}
 			return skyType;
 		}
 
-		// Token: 0x06000085 RID: 133
+		// Token: 0x06000097 RID: 151
 		public void UpdateIntroClouds(string type)
 		{
 			try
@@ -562,7 +562,7 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x06000086 RID: 134
+		// Token: 0x06000098 RID: 152
 		public void UpdateSky()
 		{
 			SkyInfo.SkyType currentSkyType = this.GetCurrentSkyType();
@@ -570,7 +570,7 @@ namespace SkyControllerPP
 			this.SetSkyShader(currentSkyType);
 		}
 
-		// Token: 0x06000090 RID: 144
+		// Token: 0x060000A2 RID: 162
 		private void BuildGreekSky()
 		{
 			this.greekDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Day").gameObject, base.transform);
@@ -590,70 +590,76 @@ namespace SkyControllerPP
 			this.UpdateIntroClouds("Day");
 		}
 
-		// Token: 0x04000038 RID: 56
-		private GameObject daySkybox;
-
-		// Token: 0x04000039 RID: 57
-		private GameObject dayDecor;
-
-		// Token: 0x0400003A RID: 58
-		private GameObject nightSkybox;
-
-		// Token: 0x0400003B RID: 59
-		private GameObject nightDecor;
-
-		// Token: 0x0400003C RID: 60
-		private GameObject dawnSkybox;
-
-		// Token: 0x0400003D RID: 61
-		private GameObject dawnDecor;
-
-		// Token: 0x0400003E RID: 62
-		private GameObject duskSkybox;
-
-		// Token: 0x0400003F RID: 63
-		private GameObject duskDecor;
-
-		// Token: 0x04000040 RID: 64
-		private GameObject bloodSkybox;
+		// Token: 0x060000A3 RID: 163
+		public string RandomSkyTypeAsString()
+		{
+			return Enum.GetName(typeof(SkyInfo.SkyType), this.RandomSkyType());
+		}
 
 		// Token: 0x04000041 RID: 65
-		private GameObject bloodDecor;
+		private GameObject daySkybox;
 
 		// Token: 0x04000042 RID: 66
-		private GameObject stormSkybox;
+		private GameObject dayDecor;
 
 		// Token: 0x04000043 RID: 67
-		private GameObject stormDecor;
+		private GameObject nightSkybox;
 
 		// Token: 0x04000044 RID: 68
-		private GameObject eclipseSkybox;
+		private GameObject nightDecor;
 
 		// Token: 0x04000045 RID: 69
-		private GameObject eclipseDecor;
+		private GameObject dawnSkybox;
 
 		// Token: 0x04000046 RID: 70
-		private GameObject winterSkybox;
+		private GameObject dawnDecor;
 
 		// Token: 0x04000047 RID: 71
-		private GameObject winterDecor;
+		private GameObject duskSkybox;
 
 		// Token: 0x04000048 RID: 72
-		public bool Pest;
+		private GameObject duskDecor;
 
 		// Token: 0x04000049 RID: 73
-		public bool Famine;
+		private GameObject bloodSkybox;
 
 		// Token: 0x0400004A RID: 74
-		public bool Death;
+		private GameObject bloodDecor;
 
 		// Token: 0x0400004B RID: 75
-		public bool War;
+		private GameObject stormSkybox;
 
 		// Token: 0x0400004C RID: 76
-		private GameObject greekSkybox;
+		private GameObject stormDecor;
 
 		// Token: 0x0400004D RID: 77
+		private GameObject eclipseSkybox;
+
+		// Token: 0x0400004E RID: 78
+		private GameObject eclipseDecor;
+
+		// Token: 0x0400004F RID: 79
+		private GameObject winterSkybox;
+
+		// Token: 0x04000050 RID: 80
+		private GameObject winterDecor;
+
+		// Token: 0x04000051 RID: 81
+		public bool Pest;
+
+		// Token: 0x04000052 RID: 82
+		public bool Famine;
+
+		// Token: 0x04000053 RID: 83
+		public bool Death;
+
+		// Token: 0x04000054 RID: 84
+		public bool War;
+
+		// Token: 0x04000055 RID: 85
+		private GameObject greekSkybox;
+
+		// Token: 0x04000056 RID: 86
 		private GameObject greekDecor;
 	}
 }

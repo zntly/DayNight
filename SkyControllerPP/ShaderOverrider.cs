@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x02000011 RID: 17
+	// Token: 0x02000013 RID: 19
 	[HarmonyPatch(typeof(GlobalShaderColors), "ValidateColors")]
 	public class ShaderOverrider
 	{
-		// Token: 0x06000064 RID: 100
+		// Token: 0x06000076 RID: 118
 		[HarmonyPostfix]
 		public static void Postfix(GlobalShaderColors __instance)
 		{
@@ -28,6 +28,10 @@ namespace SkyControllerPP
 				if (skyType == SkyInfo.SkyType.None)
 				{
 					skyType = SkyInfo.GetSyncedSkyType();
+				}
+				if (skyType == SkyInfo.SkyType.Random)
+				{
+					skyType = (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
 				}
 				if (SkyInfo.Instance && SkyInfo.CurrentActive != skyType)
 				{
@@ -72,6 +76,10 @@ namespace SkyControllerPP
 				if (skyType2 == SkyInfo.SkyType.None)
 				{
 					skyType2 = SkyInfo.GetSyncedSkyType();
+				}
+				if (skyType2 == SkyInfo.SkyType.Random)
+				{
+					skyType2 = (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
 				}
 				if (SkyInfo.Instance && SkyInfo.CurrentActive != skyType2)
 				{

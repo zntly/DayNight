@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace SkyControllerPP
 {
-	// Token: 0x0200000D RID: 13
+	// Token: 0x0200000F RID: 15
 	[DynamicSettings]
 	public class Settings
 	{
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000016 RID: 22
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x06000023 RID: 35
 		public ModSettings.TextInputSetting NightStart
 		{
 			get
@@ -33,8 +33,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000017 RID: 23
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x06000024 RID: 36
 		public ModSettings.TextInputSetting NightEnd
 		{
 			get
@@ -55,8 +55,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000018 RID: 24
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x06000025 RID: 37
 		public ModSettings.IntegerInputSetting DawnDuskLength
 		{
 			get
@@ -77,8 +77,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000019 RID: 25
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000026 RID: 38
 		public ModSettings.ColorPickerSetting DayShaderColor
 		{
 			get
@@ -88,87 +88,7 @@ namespace SkyControllerPP
 				colorPickerSetting.Description = "The shader color applied when using the Day skybox";
 				colorPickerSetting.DefaultValue = "#FFFFFF";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Day")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Day" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Day")));
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x0600001A RID: 26
-		public ModSettings.ColorPickerSetting NightShaderColor
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Night Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Night skybox";
-				colorPickerSetting.DefaultValue = "#7A86F3";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Night")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Night" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Night")));
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600001B RID: 27
-		public ModSettings.ColorPickerSetting DawnShaderColor
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Dawn Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Dawn skybox";
-				colorPickerSetting.DefaultValue = "#FFCCC0";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dawn")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Dawn" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Dawn")));
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x0600001C RID: 28
-		public ModSettings.ColorPickerSetting DuskShaderColor
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Dusk Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Dusk skybox";
-				colorPickerSetting.DefaultValue = "#FFCCC0";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dusk")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Dusk" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Dusk")));
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x0600001D RID: 29
-		public ModSettings.ColorPickerSetting BloodMoonShaderColor
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Blood Moon Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Blood Moon skybox";
-				colorPickerSetting.DefaultValue = "#FF7F7F";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Blood Moon")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Blood Moon" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Blood Moon")));
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Day")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Day" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Day")));
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -178,17 +98,17 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600001E RID: 30
-		public ModSettings.ColorPickerSetting StormShaderColor
+		// (get) Token: 0x06000027 RID: 39
+		public ModSettings.ColorPickerSetting NightShaderColor
 		{
 			get
 			{
 				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Storm Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Storm skybox";
-				colorPickerSetting.DefaultValue = "#707070";
+				colorPickerSetting.Name = "Night Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Night skybox";
+				colorPickerSetting.DefaultValue = "#7A86F3";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Storm")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Storm" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Storm")));
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Night")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Night" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Night")));
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -198,17 +118,17 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600001F RID: 31
-		public ModSettings.ColorPickerSetting EclipseShaderColor
+		// (get) Token: 0x06000028 RID: 40
+		public ModSettings.ColorPickerSetting DawnShaderColor
 		{
 			get
 			{
 				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Eclipse Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Eclipse skybox";
-				colorPickerSetting.DefaultValue = "#8855FF";
+				colorPickerSetting.Name = "Dawn Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Dawn skybox";
+				colorPickerSetting.DefaultValue = "#FFCCC0";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Eclipse")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Eclipse" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Eclipse")));
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dawn")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Dawn" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Dawn")));
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -218,17 +138,17 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000020 RID: 32
-		public ModSettings.ColorPickerSetting WinterShaderColor
+		// (get) Token: 0x06000029 RID: 41
+		public ModSettings.ColorPickerSetting DuskShaderColor
 		{
 			get
 			{
 				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Winter Shader Color";
-				colorPickerSetting.Description = "The shader color applied when using the Winter skybox";
-				colorPickerSetting.DefaultValue = "#99B3FF";
+				colorPickerSetting.Name = "Dusk Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Dusk skybox";
+				colorPickerSetting.DefaultValue = "#FFCCC0";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Winter")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Winter" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Winter")));
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dusk")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Dusk" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Dusk")));
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -238,7 +158,87 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000021 RID: 33
+		// (get) Token: 0x0600002A RID: 42
+		public ModSettings.ColorPickerSetting BloodMoonShaderColor
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Blood Moon Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Blood Moon skybox";
+				colorPickerSetting.DefaultValue = "#FF7F7F";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Blood Moon")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Blood Moon" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Blood Moon")));
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x1700000D RID: 13
+		// (get) Token: 0x0600002B RID: 43
+		public ModSettings.ColorPickerSetting StormShaderColor
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Storm Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Storm skybox";
+				colorPickerSetting.DefaultValue = "#707070";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Storm")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Storm" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Storm")));
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x1700000E RID: 14
+		// (get) Token: 0x0600002C RID: 44
+		public ModSettings.ColorPickerSetting EclipseShaderColor
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Eclipse Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Eclipse skybox";
+				colorPickerSetting.DefaultValue = "#8855FF";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Eclipse")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Eclipse" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Eclipse")));
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x1700000F RID: 15
+		// (get) Token: 0x0600002D RID: 45
+		public ModSettings.ColorPickerSetting WinterShaderColor
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Winter Shader Color";
+				colorPickerSetting.Description = "The shader color applied when using the Winter skybox";
+				colorPickerSetting.DefaultValue = "#99B3FF";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Winter")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Winter" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Winter")));
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x17000010 RID: 16
+		// (get) Token: 0x0600002E RID: 46
 		public ModSettings.DropdownSetting SetDefaultSky
 		{
 			get
@@ -258,8 +258,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000022 RID: 34
+		// Token: 0x17000011 RID: 17
+		// (get) Token: 0x0600002F RID: 47
 		public ModSettings.DropdownSetting SetDaySky
 		{
 			get
@@ -279,8 +279,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000023 RID: 35
+		// Token: 0x17000012 RID: 18
+		// (get) Token: 0x06000030 RID: 48
 		public ModSettings.DropdownSetting SetNightSky
 		{
 			get
@@ -300,8 +300,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000024 RID: 36
+		// Token: 0x17000013 RID: 19
+		// (get) Token: 0x06000031 RID: 49
 		public ModSettings.DropdownSetting SetApocSky
 		{
 			get
@@ -321,7 +321,7 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x06000025 RID: 37
+		// Token: 0x06000032 RID: 50
 		public static void UpdateSky()
 		{
 			if (!(SkyInfo.Instance == null))
@@ -330,8 +330,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x06000026 RID: 38
+		// Token: 0x17000014 RID: 20
+		// (get) Token: 0x06000033 RID: 51
 		public ModSettings.ColorPickerSetting DayShaderColorNight
 		{
 			get
@@ -341,87 +341,7 @@ namespace SkyControllerPP
 				colorPickerSetting.Description = "The shader color applied when using the Day skybox, during the in-game Night phase";
 				colorPickerSetting.DefaultValue = "#808080";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Day")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Day");
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x06000027 RID: 39
-		public ModSettings.ColorPickerSetting NightShaderColorNight
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Night Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Night skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#4455EE";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Night")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Night");
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000028 RID: 40
-		public ModSettings.ColorPickerSetting DawnShaderColorNight
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Dawn Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Dawn skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#7D4A3E";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dawn")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dawn");
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000029 RID: 41
-		public ModSettings.ColorPickerSetting DuskShaderColorNight
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Dusk Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Dusk skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#7D4A3E";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dusk")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dusk");
-				colorPickerSetting.OnChanged = delegate(Color s)
-				{
-					Settings.UpdateSky();
-				};
-				return colorPickerSetting;
-			}
-		}
-
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x0600002A RID: 42
-		public ModSettings.ColorPickerSetting BloodMoonShaderColorNight
-		{
-			get
-			{
-				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Blood Moon Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Blood Moon skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#5C001C";
-				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Blood Moon")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Blood Moon");
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Day")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Day" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Day");
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -431,17 +351,17 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x0600002B RID: 43
-		public ModSettings.ColorPickerSetting StormShaderColorNight
+		// (get) Token: 0x06000034 RID: 52
+		public ModSettings.ColorPickerSetting NightShaderColorNight
 		{
 			get
 			{
 				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Storm Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Storm skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#505050";
+				colorPickerSetting.Name = "Night Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Night skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#4455EE";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Storm")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Storm");
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Night")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Night" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Night");
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -451,17 +371,17 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x0600002C RID: 44
-		public ModSettings.ColorPickerSetting EclipseShaderColorNight
+		// (get) Token: 0x06000035 RID: 53
+		public ModSettings.ColorPickerSetting DawnShaderColorNight
 		{
 			get
 			{
 				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Eclipse Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Eclipse skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#4A2E8A";
+				colorPickerSetting.Name = "Dawn Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Dawn skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#7D4A3E";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Eclipse")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Eclipse");
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dawn")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dawn" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dawn");
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -471,17 +391,17 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x0600002D RID: 45
-		public ModSettings.ColorPickerSetting WinterShaderColorNight
+		// (get) Token: 0x06000036 RID: 54
+		public ModSettings.ColorPickerSetting DuskShaderColorNight
 		{
 			get
 			{
 				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
-				colorPickerSetting.Name = "Winter Shader Color (Night)";
-				colorPickerSetting.Description = "The shader color applied when using the Winter skybox, during the in-game Night phase";
-				colorPickerSetting.DefaultValue = "#232C45";
+				colorPickerSetting.Name = "Dusk Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Dusk skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#7D4A3E";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Winter")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Winter");
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Dusk")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Dusk" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Dusk");
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -491,7 +411,87 @@ namespace SkyControllerPP
 		}
 
 		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x0600002E RID: 46
+		// (get) Token: 0x06000037 RID: 55
+		public ModSettings.ColorPickerSetting BloodMoonShaderColorNight
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Blood Moon Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Blood Moon skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#5C001C";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Blood Moon")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Blood Moon" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Blood Moon");
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x17000019 RID: 25
+		// (get) Token: 0x06000038 RID: 56
+		public ModSettings.ColorPickerSetting StormShaderColorNight
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Storm Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Storm skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#505050";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Storm")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Storm" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Storm");
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x1700001A RID: 26
+		// (get) Token: 0x06000039 RID: 57
+		public ModSettings.ColorPickerSetting EclipseShaderColorNight
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Eclipse Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Eclipse skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#4A2E8A";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Eclipse")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Eclipse" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Eclipse");
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x1700001B RID: 27
+		// (get) Token: 0x0600003A RID: 58
+		public ModSettings.ColorPickerSetting WinterShaderColorNight
+		{
+			get
+			{
+				ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+				colorPickerSetting.Name = "Winter Shader Color (Night)";
+				colorPickerSetting.Description = "The shader color applied when using the Winter skybox, during the in-game Night phase";
+				colorPickerSetting.DefaultValue = "#232C45";
+				colorPickerSetting.AvailableInGame = true;
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Winter")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Winter" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Winter");
+				colorPickerSetting.OnChanged = delegate(Color s)
+				{
+					Settings.UpdateSky();
+				};
+				return colorPickerSetting;
+			}
+		}
+
+		// Token: 0x1700001C RID: 28
+		// (get) Token: 0x0600003B RID: 59
 		public ModSettings.DropdownSetting SetTribunalSky
 		{
 			get
@@ -511,8 +511,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x0600002F RID: 47
+		// Token: 0x1700001D RID: 29
+		// (get) Token: 0x0600003C RID: 60
 		public ModSettings.DropdownSetting SetCourtSky
 		{
 			get
@@ -532,8 +532,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x06000030 RID: 48
+		// Token: 0x1700001E RID: 30
+		// (get) Token: 0x0600003D RID: 61
 		public ModSettings.DropdownSetting SetDaybreakSky
 		{
 			get
@@ -553,8 +553,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x06000031 RID: 49
+		// Token: 0x1700001F RID: 31
+		// (get) Token: 0x0600003E RID: 62
 		public ModSettings.DropdownSetting SetDawnSky
 		{
 			get
@@ -574,8 +574,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x06000032 RID: 50
+		// Token: 0x17000020 RID: 32
+		// (get) Token: 0x0600003F RID: 63
 		public ModSettings.DropdownSetting SetDuskSky
 		{
 			get
@@ -595,8 +595,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x06000033 RID: 51
+		// Token: 0x17000021 RID: 33
+		// (get) Token: 0x06000040 RID: 64
 		public ModSettings.CheckboxSetting ColorSnowflakes
 		{
 			get
@@ -616,8 +616,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x06000035 RID: 53
+		// Token: 0x17000022 RID: 34
+		// (get) Token: 0x06000042 RID: 66
 		public ModSettings.DropdownSetting JailCellShadingMode
 		{
 			get
@@ -637,8 +637,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x06000036 RID: 54
+		// Token: 0x17000023 RID: 35
+		// (get) Token: 0x06000043 RID: 67
 		public ModSettings.ColorPickerSetting GreekShaderColor
 		{
 			get
@@ -648,7 +648,7 @@ namespace SkyControllerPP
 				colorPickerSetting.Description = "The shader color applied when using the Greek skybox";
 				colorPickerSetting.DefaultValue = "#A5B0BD";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Greek")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Greek" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Greek")));
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Greek")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Greek" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Greek")));
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -657,8 +657,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x06000037 RID: 55
+		// Token: 0x17000024 RID: 36
+		// (get) Token: 0x06000044 RID: 68
 		public ModSettings.ColorPickerSetting GreekShaderColorNight
 		{
 			get
@@ -668,7 +668,7 @@ namespace SkyControllerPP
 				colorPickerSetting.Description = "The shader color applied when using the Greek skybox, during the in-game Night phase";
 				colorPickerSetting.DefaultValue = "#546A7B";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Greek")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Greek");
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Greek")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Greek" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Greek");
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -677,8 +677,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x06000038 RID: 56
+		// Token: 0x17000025 RID: 37
+		// (get) Token: 0x06000045 RID: 69
 		public ModSettings.ColorPickerSetting VoidShaderColor
 		{
 			get
@@ -688,7 +688,7 @@ namespace SkyControllerPP
 				colorPickerSetting.Description = "The shader color applied when using the Void skybox";
 				colorPickerSetting.DefaultValue = "#0F0F0F";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Void")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Void" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Void")));
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Void")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Void" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Void")));
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -697,8 +697,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x06000039 RID: 57
+		// Token: 0x17000026 RID: 38
+		// (get) Token: 0x06000046 RID: 70
 		public ModSettings.ColorPickerSetting VoidShaderColorNight
 		{
 			get
@@ -708,7 +708,7 @@ namespace SkyControllerPP
 				colorPickerSetting.Description = "The shader color applied when using the Void skybox, during the in-game Night phase";
 				colorPickerSetting.DefaultValue = "#000000";
 				colorPickerSetting.AvailableInGame = true;
-				colorPickerSetting.Available = (((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Void")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Void");
+				colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Void")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Void" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Void");
 				colorPickerSetting.OnChanged = delegate(Color s)
 				{
 					Settings.UpdateSky();
@@ -717,8 +717,8 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x0600003A RID: 58
+		// Token: 0x17000027 RID: 39
+		// (get) Token: 0x06000047 RID: 71
 		public ModSettings.ColorPickerSetting JailCellShaderColor
 		{
 			get
@@ -737,10 +737,52 @@ namespace SkyControllerPP
 			}
 		}
 
-		// Token: 0x0400000A RID: 10
-		private readonly List<string> AvailableSkyboxes = new List<string>(11)
+		// Token: 0x17000028 RID: 40
+		// (get) Token: 0x06000049 RID: 73
+		public ModSettings.DropdownSetting RandomSkyMode
+		{
+			get
+			{
+				ModSettings.DropdownSetting dropdownSetting = new ModSettings.DropdownSetting();
+				dropdownSetting.Name = "Random Sky Mode";
+				dropdownSetting.Description = "How often the random skybox updates";
+				dropdownSetting.Options = this.RandomModes;
+				dropdownSetting.AvailableInGame = true;
+				dropdownSetting.Available = Settings.SettingsCache.ContainsValue("Random");
+				dropdownSetting.OnChanged = delegate(string s)
+				{
+					Settings.SettingsCache.SetValue("Random Sky Mode", s);
+				};
+				return dropdownSetting;
+			}
+		}
+
+		// Token: 0x170000EB RID: 235
+		// (get) Token: 0x060002AC RID: 684
+		public ModSettings.IntegerInputSetting RandomSkyWait
+		{
+			get
+			{
+				ModSettings.IntegerInputSetting integerInputSetting = new ModSettings.IntegerInputSetting();
+				integerInputSetting.Name = "Random Sky Wait";
+				integerInputSetting.Description = "How long to wait before the random sky updates";
+				integerInputSetting.MinValue = 5;
+				integerInputSetting.MaxValue = 30;
+				integerInputSetting.DefaultValue = 5;
+				integerInputSetting.Available = (Settings.SettingsCache.ContainsValue("Random") && (string)Settings.SettingsCache.GetValue("Random Sky Mode", null) == "Time in Seconds");
+				integerInputSetting.OnChanged = delegate(int f)
+				{
+					Settings.SettingsCache.SetValue("Random Sky Wait in Seconds", (float)f);
+				};
+				return integerInputSetting;
+			}
+		}
+
+		// Token: 0x0400000F RID: 15
+		private readonly List<string> AvailableSkyboxes = new List<string>(12)
 		{
 			"None",
+			"Random",
 			"Day",
 			"Night",
 			"Dawn",
@@ -753,7 +795,7 @@ namespace SkyControllerPP
 			"Void"
 		};
 
-		// Token: 0x0400000B RID: 11
+		// Token: 0x04000010 RID: 16
 		private readonly List<string> JailCellShadingModes = new List<string>(3)
 		{
 			"Normal",
@@ -761,7 +803,7 @@ namespace SkyControllerPP
 			"Custom"
 		};
 
-		// Token: 0x04000070 RID: 112
+		// Token: 0x04000011 RID: 17
 		public static Dictionary<string, object> SettingsCache = new Dictionary<string, object>
 		{
 			{
@@ -807,7 +849,26 @@ namespace SkyControllerPP
 			{
 				"Jail Cell Shading Mode",
 				"Normal"
+			},
+			{
+				"Random Sky Mode",
+				"Time in Seconds"
+			},
+			{
+				"Random Sky Wait in Seconds",
+				5f
+			},
+			{
+				"Current Random Sky",
+				"Day"
 			}
+		};
+
+		// Token: 0x04000012 RID: 18
+		private readonly List<string> RandomModes = new List<string>(2)
+		{
+			"Time in Seconds",
+			"Phase Change"
 		};
 	}
 }

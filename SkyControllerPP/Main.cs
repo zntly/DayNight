@@ -41,36 +41,6 @@ namespace SkyControllerPP
 			}
 			try
 			{
-				if (ModSettings.GetString("Default Skybox", "curtis.day.night.sync") == "Random")
-				{
-					ModSettings.SetString("Default Skybox", "None", "curtis.day.night.sync");
-				}
-				if (ModSettings.GetString("Day Skybox", "curtis.day.night.sync") == "Random")
-				{
-					ModSettings.SetString("Day Skybox", "None", "curtis.day.night.sync");
-				}
-				if (ModSettings.GetString("Night Skybox", "curtis.day.night.sync") == "Random")
-				{
-					ModSettings.SetString("Night Skybox", "None", "curtis.day.night.sync");
-				}
-				if (ModSettings.GetString("Tribunal Skybox", "curtis.day.night.sync") == "Random")
-				{
-					ModSettings.SetString("Tribunal Skybox", "None", "curtis.day.night.sync");
-				}
-				if (ModSettings.GetString("Court Skybox", "curtis.day.night.sync") == "Random")
-				{
-					ModSettings.SetString("Court Skybox", "None", "curtis.day.night.sync");
-				}
-				if (ModSettings.GetString("Daybreak Skybox", "curtis.day.night.sync") == "Random")
-				{
-					ModSettings.SetString("Daybreak Skybox", "None", "curtis.day.night.sync");
-				}
-			}
-			catch
-			{
-			}
-			try
-			{
 				Settings.SettingsCache.SetValue("Default Skybox", ModSettings.GetString("Default Skybox", "curtis.day.night.sync"));
 				Settings.SettingsCache.SetValue("Day Skybox", ModSettings.GetString("Day Skybox", "curtis.day.night.sync"));
 				Settings.SettingsCache.SetValue("Night Skybox", ModSettings.GetString("Night Skybox", "curtis.day.night.sync"));
@@ -82,10 +52,14 @@ namespace SkyControllerPP
 				Settings.SettingsCache.SetValue("Daybreak Skybox", ModSettings.GetString("Daybreak Skybox", "curtis.day.night.sync"));
 				Settings.SettingsCache.SetValue("Color Snowflakes to Shader Color", ModSettings.GetBool("Color Snowflakes to Shader Color", "curtis.day.night.sync"));
 				Settings.SettingsCache.SetValue("Jail Cell Shading Mode", ModSettings.GetString("Jail Cell Shading Mode", "curtis.day.night.sync"));
+				Settings.SettingsCache.SetValue("Random Sky Mode", ModSettings.GetString("Random Sky Mode", "curtis.day.night.sync"));
+				Settings.SettingsCache.SetValue("Random Sky Wait in Seconds", (float)ModSettings.GetInt("Random Sky Wait", "curtis.day.night.sync"));
 			}
 			catch
 			{
 			}
+			this.Corotine = this.RandomSkyWaitCoroutine();
+			ApplicationController.ApplicationContext.StartCoroutine(this.Corotine);
 			Service.Home.ApplicationService.OnSceneLoaded += delegate(SceneType sceneType, LoadSceneMode loadSceneMode)
 			{
 				if (Main.Snowflakes == null && (sceneType == SceneType.MAP || sceneType == SceneType.GAME) && Service.Home.Customizations.myCustomizationSelections.Data.mapId == 2)
@@ -144,10 +118,31 @@ namespace SkyControllerPP
 			};
 		}
 
+		// Token: 0x0600000C RID: 12
+		public IEnumerator<WaitForSeconds> RandomSkyWaitCoroutine()
+		{
+			for (;;)
+			{
+				yield return new WaitForSeconds((float)Settings.SettingsCache.GetValue("Random Sky Wait in Seconds", null));
+				if ((string)Settings.SettingsCache.GetValue("Random Sky Mode", null) == "Time in Seconds" && SkyInfo.Instance)
+				{
+					Settings.SettingsCache.SetValue("Current Random Sky", SkyInfo.Instance.RandomSkyTypeAsString());
+					if (Leo.IsHomeScene())
+					{
+						SkyInfo.Instance.UpdateSky();
+					}
+				}
+			}
+			yield break;
+		}
+
 		// Token: 0x04000002 RID: 2
 		public static Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
 
 		// Token: 0x04000003 RID: 3
 		public static ParticleSystem Snowflakes;
+
+		// Token: 0x04000004 RID: 4
+		public IEnumerator<WaitForSeconds> Corotine;
 	}
 }
