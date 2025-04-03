@@ -55,25 +55,25 @@ namespace DayNight
 				Settings.SettingsCache.SetValue("Random Sky Mode", ModSettings.GetString("Random Sky Mode", "curtis.day.night.sync"));
 				Settings.SettingsCache.SetValue("Random Sky Wait in Seconds", (float)ModSettings.GetInt("Random Sky Wait", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Day Shader Color", ModSettings.GetColor("Day Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Day Shader Color (Night)", ModSettings.GetColor("Day Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Day Shader Color (Night)", ModSettings.GetColor("Day Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Night Shader Color", ModSettings.GetColor("Night Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Night Shader Color (Night)", ModSettings.GetColor("Night Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Night Shader Color (Night)", ModSettings.GetColor("Night Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Dawn Shader Color", ModSettings.GetColor("Dawn Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Dawn Shader Color (Night)", ModSettings.GetColor("Dawn Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Dawn Shader Color (Night)", ModSettings.GetColor("Dawn Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Dusk Shader Color", ModSettings.GetColor("Dusk Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Dusk Shader Color (Night)", ModSettings.GetColor("Dusk Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Dusk Shader Color (Night)", ModSettings.GetColor("Dusk Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Blood Moon Shader Color", ModSettings.GetColor("Blood Moon Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Blood Moon Shader Color (Night)", ModSettings.GetColor("Blood Moon Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Blood Moon Shader Color (Night)", ModSettings.GetColor("Blood Moon Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Storm Shader Color", ModSettings.GetColor("Storm Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Storm Shader Color (Night)", ModSettings.GetColor("Storm Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Storm Shader Color (Night)", ModSettings.GetColor("Storm Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Eclipse Shader Color", ModSettings.GetColor("Eclipse Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Eclipse Shader Color (Night)", ModSettings.GetColor("Eclipse Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Eclipse Shader Color (Night)", ModSettings.GetColor("Eclipse Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Winter Shader Color", ModSettings.GetColor("Winter Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Winter Shader Color (Night)", ModSettings.GetColor("Winter Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Winter Shader Color (Night)", ModSettings.GetColor("Winter Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Greek Shader Color", ModSettings.GetColor("Greek Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Greek Shader Color (Night)", ModSettings.GetColor("Greek Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Greek Shader Color (Night)", ModSettings.GetColor("Greek Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Void Shader Color", ModSettings.GetColor("Void Shader Color", "curtis.day.night.sync"));
-				Settings.ColorCache.SetValue("Void Shader Color (Night)", ModSettings.GetColor("Void Shader Color", "curtis.day.night.sync"));
+				Settings.ColorCache.SetValue("Void Shader Color (Night)", ModSettings.GetColor("Void Shader Color (Night)", "curtis.day.night.sync"));
 				Settings.ColorCache.SetValue("Jail Cell Shader Color", ModSettings.GetColor("Jail Cell Shader Color", "curtis.day.night.sync"));
 			}
 			catch
