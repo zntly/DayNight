@@ -26,17 +26,21 @@ namespace DayNight
 				{
 					switch (killRecord.playerRole)
 					{
+					case Role.BAKER:
 					case Role.FAMINE:
-						SkyInfo.Instance.Famine = false;
+						SkyInfo.Instance.Famine = Math.Max(0, SkyInfo.Instance.Famine - 1);
 						break;
+					case Role.BERSERKER:
 					case Role.WAR:
-						SkyInfo.Instance.War = false;
+						SkyInfo.Instance.War = Math.Max(0, SkyInfo.Instance.War - 1);
 						break;
+					case Role.PLAGUEBEARER:
 					case Role.PESTILENCE:
-						SkyInfo.Instance.Pest = false;
+						SkyInfo.Instance.Pest = Math.Max(0, SkyInfo.Instance.Pest - 1);
 						break;
+					case Role.SOULCOLLECTOR:
 					case Role.DEATH:
-						SkyInfo.Instance.Death = false;
+						SkyInfo.Instance.Death = Math.Max(0, SkyInfo.Instance.Death - 1);
 						break;
 					}
 				}

@@ -21,7 +21,7 @@ namespace DayNight
 					SkyInfo.Phase = "Court";
                 }
             }
-			if (SkyInfo.Phase != "Tribunal" && SkyInfo.Phase != "Court" && SkyInfo.Phase != "Daybreak" && (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War))
+			if (SkyInfo.Phase != "Tribunal" && SkyInfo.Phase != "Court" && SkyInfo.Phase != "Daybreak" && Utils.ApocCheck())
 			{
 				skyType = SkyInfo.GetCurrentApocSkyType();
 			}

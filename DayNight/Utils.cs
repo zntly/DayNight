@@ -45,9 +45,28 @@ namespace DayNight
 			return Utils.InternalCourtCheck();
 		}
 
+		public static bool ApocCheck()
+		{
+			if (!Utils.IsBTOS2())
+            {
+				if (SkyInfo.Instance)
+                {
+					return SkyInfo.Instance.Pest + SkyInfo.Instance.Famine + SkyInfo.Instance.War + SkyInfo.Instance.Death > 0;
+				}
+				return false;
+            }
+			return Utils.InternalApocCheck();
+		}
+
 		private static bool InternalCourtCheck()
         {
 			return GameObservationsPatch.musicOverrideObservation.Data.court;
+		}
+
+		private static bool InternalApocCheck()
+        {
+			return GameObservationsPatch.musicOverrideObservation.Data.apoc;
+
 		}
 	}
 }

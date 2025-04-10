@@ -525,7 +525,7 @@ namespace DayNight
 				}
 				skyType = SkyInfo.GetSyncedSkyType();
 			}
-			if (this.Pest || this.Famine || this.Death || this.War)
+			if (Utils.ApocCheck())
 			{
 				SkyInfo.SkyType currentApocSkyType = SkyInfo.GetCurrentApocSkyType();
 				if (currentApocSkyType > SkyInfo.SkyType.None)
@@ -638,16 +638,16 @@ namespace DayNight
 		private GameObject winterDecor;
 
 		// Token: 0x04000051 RID: 81
-		public bool Pest;
+		public int Pest = 0;
 
 		// Token: 0x04000052 RID: 82
-		public bool Famine;
+		public int Famine = 0;
 
 		// Token: 0x04000053 RID: 83
-		public bool Death;
+		public int Death = 0;
 
 		// Token: 0x04000054 RID: 84
-		public bool War;
+		public int War = 0;
 
 		// Token: 0x04000055 RID: 85
 		private GameObject greekSkybox;

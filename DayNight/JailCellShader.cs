@@ -18,7 +18,7 @@ namespace DayNight
 			JailCellShader.jailz = __instance.jailPrefab;
 			JailCellShader.lastcolor = Color.white;
 			SkyInfo.SkyType skyType = SkyInfo.GetCurrentPermSkyType();
-			if (SkyInfo.Phase != "Tribunal" && SkyInfo.Phase != "Court" && SkyInfo.Phase != "Daybreak" && (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War))
+			if (SkyInfo.Phase != "Tribunal" && SkyInfo.Phase != "Court" && SkyInfo.Phase != "Daybreak" && Utils.ApocCheck())
 			{
 				skyType = SkyInfo.GetCurrentApocSkyType();
 			}

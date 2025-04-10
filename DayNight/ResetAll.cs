@@ -18,10 +18,10 @@ namespace DayNight
 			bool flag2 = flag;
 			if (flag2)
 			{
-				SkyInfo.Instance.Pest = false;
-				SkyInfo.Instance.War = false;
-				SkyInfo.Instance.Famine = false;
-				SkyInfo.Instance.Death = false;
+				SkyInfo.Instance.Pest = 0;
+				SkyInfo.Instance.War = 0;
+				SkyInfo.Instance.Famine = 0;
+				SkyInfo.Instance.Death = 0;
 				SkyInfo.Phase = "Day";
 				SkyInfo.Instance.UpdateSky();
 			}

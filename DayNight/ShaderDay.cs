@@ -17,7 +17,7 @@ namespace DayNight
 			{
 				SkyInfo.Phase = "Day";
 				SkyInfo.SkyType skyType = SkyInfo.GetCurrentPermSkyType();
-				if (SkyInfo.Instance.Pest || SkyInfo.Instance.Famine || SkyInfo.Instance.Death || SkyInfo.Instance.War)
+				if (Utils.ApocCheck())
 				{
 					skyType = SkyInfo.GetCurrentApocSkyType();
 				}

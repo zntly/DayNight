@@ -33,7 +33,7 @@ namespace DayNight
 						bool flag8 = flag7;
 						if (flag8)
 						{
-							SkyInfo.Instance.Famine = true;
+							SkyInfo.Instance.Famine += 1;
 						}
 						else
 						{
@@ -41,7 +41,7 @@ namespace DayNight
 							bool flag10 = flag9;
 							if (flag10)
 							{
-								SkyInfo.Instance.Pest = true;
+								SkyInfo.Instance.Pest += 1;
 							}
 						}
 					}
@@ -55,12 +55,12 @@ namespace DayNight
 							bool flag14 = flag13;
 							if (flag14)
 							{
-								SkyInfo.Instance.War = true;
+								SkyInfo.Instance.War += 1;
 							}
 						}
 						else
 						{
-							SkyInfo.Instance.Death = true;
+							SkyInfo.Instance.Death += 1;
 						}
 					}
 				}
