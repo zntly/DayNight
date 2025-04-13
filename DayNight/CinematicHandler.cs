@@ -22,6 +22,11 @@ namespace DayNight
 			{
 				SkyInfo.Phase = "Tribunal";
 			}
+			else if (cinematicType == CinematicType.TownWins)
+            {
+				CinematicHandler.OldPhase = SkyInfo.Phase;
+				SkyInfo.Phase = "Day";
+			}
 			else if (cinematicType == CinematicType.ArsonistsWins || cinematicType == CinematicType.WerewolvesWin || cinematicType == CinematicType.FactionWins)
 			{
 				CinematicHandler.OldPhase = SkyInfo.Phase;
