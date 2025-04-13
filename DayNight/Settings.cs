@@ -882,7 +882,7 @@ namespace DayNight
 			},
 			{
 				"Current Random Sky",
-				"Day"
+				Enum.GetName(typeof(SkyInfo.SkyType), (SkyInfo.SkyType)new System.Random().Next(2, 11))
 			}
 		};
 

@@ -89,7 +89,7 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="modinfo.json" />
+    <EmbeddedResource Include="resources\modinfo.json" />
     <EmbeddedResource Include="resources\assetbundles.daynight" />
     <EmbeddedResource Include="resources\assetbundles.daynight_mac" />
     <EmbeddedResource Include="resources\images\thumbnail.png" />
