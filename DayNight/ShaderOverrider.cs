@@ -39,7 +39,7 @@ namespace DayNight
 			UpdateSkyTypeIfChanged(skyType);
 			UpdateCinematicTint(__instance, skyType, isBTOS2);
 		}
-		private static SkyInfo.SkyType GetRandomSkyType()
+		public static SkyInfo.SkyType GetRandomSkyType()
 		{
 			return (SkyInfo.SkyType)Enum.Parse(typeof(SkyInfo.SkyType), (string)Settings.SettingsCache.GetValue("Current Random Sky", null));
 		}
@@ -73,7 +73,7 @@ namespace DayNight
 			if (instance.colorProviders.Contains(GlobalShaderColors.ColorProviders.Cinematic) &&
 				(instance.cinematicPlayer.cinematicType == CinematicType.RoleReveal ||
 				 instance.cinematicPlayer.cinematicType == CinematicType.HexBomb ||
-				 (isBTOS2 && instance.cinematicPlayer.cinematicType == CinematicType.None)))
+				 (isBTOS2 && instance.cinematicPlayer.cinematicType == CinematicType.None && SkyInfo.Phase != "Daybreak")))
 			{
 				instance.targetExteriorGlobalTintColor *= SkyInfo.GetSkyColor(skyType);
 			}
