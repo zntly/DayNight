@@ -14,7 +14,3 @@ using System.Security.Permissions;
 [assembly: AssemblyInformationalVersion("1.0.0+19f8796a7653364fad370b7ea1ac0346c7825741")]
 [assembly: AssemblyProduct("DayNight")]
 [assembly: AssemblyTitle("DayNight")]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
-[module: RefSafetyRules(11)]
