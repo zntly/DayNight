@@ -17,7 +17,7 @@ namespace DayNight
         {
             bool flag = !(SkyInfo.Instance == null);
             bool flag2 = flag;
-            if (flag2)
+            if (flag2 && !ApocalypseSwap.processedList.Contains(chatLogMessage))
             {
                 KillRecord killRecord = ((ChatLogWhoDiedEntry)chatLogMessage.chatLogEntry).killRecord;
                 bool flag3 = killRecord != null;
@@ -28,23 +28,31 @@ namespace DayNight
                     {
                         case Role.BAKER:
                         case Role.FAMINE:
-                            int nv = SkyInfo.Instance.Famine - 1;
-                            SkyInfo.Instance.Famine = Math.Max(0, nv);
+                            ApocalypseSwap.processedList.Add(chatLogMessage);
+                            SkyInfo.Instance.Famine -= 1;
+                            if (SkyInfo.Instance.Famine < 0)
+                                SkyInfo.Instance.Famine = 0;
                             break;
                         case Role.BERSERKER:
                         case Role.WAR:
-                            int nv2 = SkyInfo.Instance.War - 1;
-                            SkyInfo.Instance.War = Math.Max(0, nv2);
+                            ApocalypseSwap.processedList.Add(chatLogMessage);
+                            SkyInfo.Instance.War -= 1;
+                            if (SkyInfo.Instance.War < 0)
+                                SkyInfo.Instance.War = 0;
                             break;
                         case Role.PLAGUEBEARER:
                         case Role.PESTILENCE:
-                            int nv3 = SkyInfo.Instance.Pest - 1;
-                            SkyInfo.Instance.Pest = Math.Max(0, nv3);
+                            ApocalypseSwap.processedList.Add(chatLogMessage);
+                            SkyInfo.Instance.Pest -= 1;
+                            if (SkyInfo.Instance.Pest < 0)
+                                SkyInfo.Instance.Pest = 0;
                             break;
                         case Role.SOULCOLLECTOR:
                         case Role.DEATH:
-                            int nv4 = SkyInfo.Instance.Death - 1;
-                            SkyInfo.Instance.Death = Math.Max(0, nv4);
+                            ApocalypseSwap.processedList.Add(chatLogMessage);
+                            SkyInfo.Instance.Death -= 1;
+                            if (SkyInfo.Instance.Death < 0)
+                                SkyInfo.Instance.Death = 0;
                             break;
                     }
                 }

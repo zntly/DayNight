@@ -91,7 +91,8 @@ namespace DayNight
 					SkyInfo.Instance.Famine = 0;
 					SkyInfo.Instance.War = 0;
 					SkyInfo.Instance.Death = 0;
-					if (Leo.IsHomeScene())
+                    ApocalypseSwap.processedList.Clear();
+                    if (Leo.IsHomeScene())
 					{
 						if (!Main.DidRandom)
                         {

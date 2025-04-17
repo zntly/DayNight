@@ -4,6 +4,7 @@ using HarmonyLib;
 using Server.Shared.Messages;
 using Server.Shared.State;
 using Server.Shared.State.Chat;
+using System.Collections.Generic;
 
 namespace DayNight
 {
@@ -17,7 +18,7 @@ namespace DayNight
 		{
 			bool flag = !(SkyInfo.Instance == null);
 			bool flag2 = flag;
-			if (flag2)
+			if (flag2 && !ApocalypseSwap.processedList.Contains(chatLogMessage))
 			{
 				ChatLogGameMessageEntry chatLogGameMessageEntry = (ChatLogGameMessageEntry)chatLogMessage.chatLogEntry;
 				bool flag3 = chatLogGameMessageEntry != null;
@@ -34,6 +35,7 @@ namespace DayNight
 						if (flag8)
 						{
 							SkyInfo.Instance.Famine += 1;
+                            ApocalypseSwap.processedList.Add(chatLogMessage);
 						}
 						else
 						{
@@ -42,7 +44,8 @@ namespace DayNight
 							if (flag10)
 							{
 								SkyInfo.Instance.Pest += 1;
-							}
+                                ApocalypseSwap.processedList.Add(chatLogMessage);
+                            }
 						}
 					}
 					else
@@ -56,15 +59,19 @@ namespace DayNight
 							if (flag14)
 							{
 								SkyInfo.Instance.War += 1;
-							}
+                                ApocalypseSwap.processedList.Add(chatLogMessage);
+                            }
 						}
 						else
 						{
 							SkyInfo.Instance.Death += 1;
-						}
+                            ApocalypseSwap.processedList.Add(chatLogMessage);
+                        }
 					}
 				}
 			}
 		}
+
+		public static List<ChatLogMessage> processedList = new List<ChatLogMessage>();
 	}
 }

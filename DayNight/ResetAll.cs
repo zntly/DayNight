@@ -23,6 +23,7 @@ namespace DayNight
 				SkyInfo.Instance.Famine = 0;
 				SkyInfo.Instance.Death = 0;
 				SkyInfo.Phase = "Day";
+				ApocalypseSwap.processedList.Clear();
 				SkyInfo.Instance.UpdateSky();
 			}
 		}
