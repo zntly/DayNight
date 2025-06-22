@@ -68,6 +68,7 @@
     <Compile Include="ApocalypseSwap.cs" />
     <Compile Include="CinematicHandler.cs" />
     <Compile Include="CinematicEndHandler.cs" />
+    <Compile Include="DaybreakCheck.cs" />
     <Compile Include="GameObjectExtensions.cs" />
     <Compile Include="JailCellShader.cs" />
     <Compile Include="Main.cs" />
