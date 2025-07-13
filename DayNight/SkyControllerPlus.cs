@@ -381,7 +381,7 @@ namespace DayNight
                 UnityEngine.Object.Destroy(this.customDecor.transform.Find("MoonCloud").gameObject);
             }
             else if (Settings.customCelestialObject == "Invis")
-                this.mafiaDecor.transform.Find("Sun").gameObject.SetActive(false);
+                this.customDecor.transform.Find("Sun").gameObject.SetActive(false);
             this.UpdateIntroClouds(Settings.customClouds);
         }
         // Token: 0x06000091 RID: 145

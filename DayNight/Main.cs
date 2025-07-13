@@ -87,6 +87,7 @@ To change the clouds of the Custom skybox, edit the SkyboxData.json file. Here a
     ""Dawn"" - Uses the orange clouds that the Dawn and Dusk skyboxes normally use
     ""BloodMoon"" - Uses the red clouds that the Blood Moon skybox normally uses
     ""Storm"" - Uses the stormy clouds that the Storm skybox normally uses
+    ""Greek"" - Uses the clouds that the Greek skybox normally uses
     ""Custom"" - Uses the clouds specified in the files Cloud1.png to Cloud6.png. There MUST be exactly 6 clouds, named as they currently are. (The current Cloud pngs are the ones the Day skybox uses, for reference)
     ""Invis"" - No clouds/Invisible
 
