@@ -50,6 +50,9 @@ namespace DayNight
                     case SkyInfo.SkyType.Void:
                         SkyInfo.Instance.UpdateIntroClouds("Invis");
                         break;
+                    case SkyInfo.SkyType.Custom:
+                        SkyInfo.Instance.UpdateIntroClouds(Settings.customClouds);
+                        break;
                 }
             }
             SkyInfo.Instance.UpdateSky();

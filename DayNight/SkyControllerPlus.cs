@@ -48,6 +48,9 @@ namespace DayNight
                 case SkyInfo.SkyType.Void:
                     this.UpdateIntroClouds("Invis");
                     break;
+                case SkyInfo.SkyType.Custom:
+                    SkyInfo.Instance.UpdateIntroClouds(Settings.customClouds);
+                    break;
             }
             this.SetSkyShader(currentSkyType);
             this.Setup();
@@ -61,6 +64,7 @@ namespace DayNight
             this.BuildWinterSky();
             this.BuildGreekSky();
             this.BuildMafiaSky();
+            this.BuildCustomSky();
             this.daySkybox.SetActive(false);
             this.nightSkybox.SetActive(false);
             this.dawnSkybox.SetActive(false);
@@ -71,6 +75,7 @@ namespace DayNight
             this.winterSkybox.SetActive(false);
             this.greekSkybox.SetActive(false);
             this.mafiaSkybox.SetActive(false);
+            this.customSkybox.SetActive(false);
             this.dayDecor.SetActive(false);
             this.nightDecor.SetActive(false);
             this.dawnDecor.SetActive(false);
@@ -81,6 +86,7 @@ namespace DayNight
             this.winterDecor.SetActive(false);
             this.greekDecor.SetActive(false);
             this.mafiaDecor.SetActive(false);
+            this.customDecor.SetActive(false);
             this.SetCurrentSkyType(currentSkyType);
         }
 
@@ -97,6 +103,7 @@ namespace DayNight
             this.winterSkybox = UnityEngine.Object.Instantiate<GameObject>(this.daySkybox, this.daySkybox.transform.parent);
             this.greekSkybox = UnityEngine.Object.Instantiate<GameObject>(this.daySkybox, this.daySkybox.transform.parent);
             this.mafiaSkybox = UnityEngine.Object.Instantiate<GameObject>(this.daySkybox, this.daySkybox.transform.parent);
+            this.customSkybox = UnityEngine.Object.Instantiate<GameObject>(this.daySkybox, this.daySkybox.transform.parent);
             this.daySkybox.name = "Skybox_Day";
             this.nightSkybox.name = "Skybox_Night";
             this.dawnSkybox.name = "Skybox_Dawn";
@@ -107,6 +114,8 @@ namespace DayNight
             this.winterSkybox.name = "Skybox_Winter";
             this.greekSkybox.name = "Skybox_Greek";
             this.mafiaSkybox.name = "Skybox_Mafia";
+            this.customSkybox.name = "Skybox_Custom";
+            this.customSkybox.transform.SetAsFirstSibling();
             this.mafiaSkybox.transform.SetAsFirstSibling();
             this.greekSkybox.transform.SetAsFirstSibling();
             this.winterSkybox.transform.SetAsFirstSibling();
@@ -156,6 +165,10 @@ namespace DayNight
             this.mafiaSkybox.GetComponentInChildren<MeshRenderer>().materials.ForEach(delegate (Material m)
             {
                 m.SetTexture("Texture2D_ADE76F9A", Main.Textures["Skybox_Gradient_Mafia"]);
+            });
+            this.customSkybox.GetComponentInChildren<MeshRenderer>().materials.ForEach(delegate (Material m)
+            {
+                m.SetTexture("Texture2D_ADE76F9A", Main.Textures["Skybox_Gradient_Custom"]);
             });
             UnityEngine.Object.Destroy(base.gameObject.transform.Find("Skybox_N").gameObject);
         }
@@ -333,6 +346,44 @@ namespace DayNight
             this.mafiaDecor.transform.Find("Sun").gameObject.SetActive(false);
             this.UpdateIntroClouds("Invis");
         }
+        private void BuildCustomSky()
+        {
+            if (Settings.customCelestialObject == "Sun" || Settings.customCelestialObject == "Invis")
+                this.customDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Day").gameObject, base.transform);
+            else
+                this.customDecor = UnityEngine.Object.Instantiate<GameObject>(base.transform.Find("Night").gameObject, base.transform);
+            this.customDecor.SetAllChildrenActive();
+            this.customDecor.name = "Custom";
+            this.customDecor.transform.SetParent(base.transform);
+            this.customDecor.transform.GetComponentsInChildren<SpriteRenderer>().ForEach(delegate (SpriteRenderer s)
+            {
+                this.SetCloudType(s, Settings.customClouds);
+            });
+            if (Settings.customCelestialObject == "Moon")
+                this.SetMoon(SkyInfo.SkyType.Night, true);
+            else if (Settings.customCelestialObject == "BloodMoon")
+                this.SetMoon(SkyInfo.SkyType.BloodMoon, true);
+            else if (Settings.customCelestialObject == "Eclipse")
+            {
+                this.SetMoon(SkyInfo.SkyType.Eclipse, true);
+                Transform transform = this.customDecor.transform.Find("Moon");
+                transform.SetParent(this.customDecor.transform);
+                if (Leo.IsGameScene())
+                {
+                    transform.localPosition = new Vector3(250f, 200f, 750f);
+                    transform.localScale = new Vector3(50f, 50f, 1f);
+                }
+                else
+                {
+                    transform.localPosition = new Vector3(0f, 70f, 750f);
+                    transform.localScale = new Vector3(45f, 45f, 1f);
+                }
+                UnityEngine.Object.Destroy(this.customDecor.transform.Find("MoonCloud").gameObject);
+            }
+            else if (Settings.customCelestialObject == "Invis")
+                this.mafiaDecor.transform.Find("Sun").gameObject.SetActive(false);
+            this.UpdateIntroClouds(Settings.customClouds);
+        }
         // Token: 0x06000091 RID: 145
         private void SetCloudType(SpriteRenderer s, string type)
         {
@@ -413,6 +464,10 @@ namespace DayNight
                     this.mafiaSkybox.SetActive(false);
                     this.mafiaDecor.SetActive(false);
                     break;
+                case SkyInfo.SkyType.Custom:
+                    this.customSkybox.SetActive(false);
+                    this.customDecor.SetActive(false);
+                    break;
             }
             SkyInfo.CurrentActive = skyType;
             switch (skyType)
@@ -457,6 +512,10 @@ namespace DayNight
                     this.mafiaSkybox.SetActive(true);
                     this.mafiaDecor.SetActive(true);
                     return;
+                case SkyInfo.SkyType.Custom:
+                    this.customSkybox.SetActive(true);
+                    this.customDecor.SetActive(true);
+                    return;
                 default:
                     return;
             }
@@ -498,13 +557,14 @@ namespace DayNight
         }
 
         // Token: 0x06000095 RID: 149
-        private void SetMoon(SkyInfo.SkyType skyType)
+        private void SetMoon(SkyInfo.SkyType skyType, bool custom = false)
         {
             if (skyType != SkyInfo.SkyType.Night)
             {
                 if (skyType == SkyInfo.SkyType.BloodMoon)
                 {
-                    SpriteRenderer componentInChildren = this.bloodDecor.transform.Find("Moon").GetComponentInChildren<SpriteRenderer>();
+                    GameObject decor = custom ? this.customDecor : this.bloodDecor;
+                    SpriteRenderer componentInChildren = decor.transform.Find("Moon").GetComponentInChildren<SpriteRenderer>();
                     Texture2D texture2D = Main.Textures["BloodMoon"];
                     componentInChildren.sprite = Sprite.Create(texture2D, new Rect(0f, 0f, (float)texture2D.width, (float)texture2D.height), new Vector2(componentInChildren.sprite.pivot.x / (float)texture2D.width, componentInChildren.sprite.pivot.y / (float)texture2D.height), componentInChildren.sprite.pixelsPerUnit, 0U, SpriteMeshType.Tight, componentInChildren.sprite.border);
                     componentInChildren.color = new Color(1f, 1f, 1f, 1f);
@@ -512,7 +572,8 @@ namespace DayNight
                 }
                 if (skyType == SkyInfo.SkyType.Eclipse)
                 {
-                    SpriteRenderer componentInChildren2 = this.eclipseDecor.transform.Find("Moon").GetComponentInChildren<SpriteRenderer>();
+                    GameObject decor = custom ? this.customDecor : this.eclipseDecor;
+                    SpriteRenderer componentInChildren2 = decor.transform.Find("Moon").GetComponentInChildren<SpriteRenderer>();
                     Texture2D texture2D2 = Main.Textures["Eclipse"];
                     componentInChildren2.sprite = Sprite.Create(texture2D2, new Rect(0f, 0f, (float)texture2D2.width, (float)texture2D2.height), new Vector2(componentInChildren2.sprite.pivot.x / (float)texture2D2.width, componentInChildren2.sprite.pivot.y / (float)texture2D2.height), componentInChildren2.sprite.pixelsPerUnit, 0U, SpriteMeshType.Tight, componentInChildren2.sprite.border);
                     componentInChildren2.color = new Color(1f, 1f, 1f, 1f);
@@ -521,7 +582,8 @@ namespace DayNight
             }
             else
             {
-                this.nightDecor.transform.Find("Moon").GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+                GameObject decor = custom ? this.customDecor : this.nightDecor;
+                decor.transform.Find("Moon").GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
             }
         }
 
@@ -679,6 +741,11 @@ namespace DayNight
 
         // Token: 0x04000056 RID: 86
         private GameObject mafiaDecor;
+
+        private GameObject customSkybox;
+
+        // Token: 0x04000056 RID: 86
+        private GameObject customDecor;
 
         // Token: 0x04000051 RID: 81
         public int Pest = 0;

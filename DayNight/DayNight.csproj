@@ -60,11 +60,15 @@
     <Reference Include="UnityEngine.ParticleSystemModule">
       <HintPath>lib\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>lib\Unity.ResourceManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMenuButton.cs" />
     <Compile Include="ApocalypseSwap.cs" />
     <Compile Include="CinematicHandler.cs" />
     <Compile Include="CinematicEndHandler.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="ShaderNight.cs" />
     <Compile Include="ShaderOverrider.cs" />
     <Compile Include="SkyboxControllerPatch.cs" />
+    <Compile Include="SkyboxData.cs" />
     <Compile Include="SkyControllerPlus.cs" />
     <Compile Include="SkyInfo.cs" />
     <Compile Include="Utils.cs" />

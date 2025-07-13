@@ -299,6 +299,24 @@ namespace DayNight
                 return colorPickerSetting;
             }
         }
+        public ModSettings.ColorPickerSetting CustomShaderColor
+        {
+            get
+            {
+                ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+                colorPickerSetting.Name = "Custom Skybox Shader Color";
+                colorPickerSetting.Description = "The shader color applied when using the Custom skybox";
+                colorPickerSetting.DefaultValue = "#FFFFFF";
+                colorPickerSetting.AvailableInGame = true;
+                colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Custom")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Tribunal Skybox", null) == "Custom" || (ModStates.IsEnabled("curtis.tuba.better.tos2") && ((string)Settings.SettingsCache.GetValue("Court Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Daybreak Skybox", null) == "Custom")));
+                colorPickerSetting.OnChanged = delegate (Color s)
+                {
+                    Settings.ColorCache.SetValue("Custom Skybox Shader Color", s);
+                    Settings.UpdateSky();
+                };
+                return colorPickerSetting;
+            }
+        }
         // Token: 0x17000010 RID: 16
         // (get) Token: 0x0600002E RID: 46
         public ModSettings.DropdownSetting SetDefaultSky
@@ -621,6 +639,24 @@ namespace DayNight
                 return colorPickerSetting;
             }
         }
+        public ModSettings.ColorPickerSetting CustomShaderColorNight
+        {
+            get
+            {
+                ModSettings.ColorPickerSetting colorPickerSetting = new ModSettings.ColorPickerSetting();
+                colorPickerSetting.Name = "Custom Skybox Shader Color (Night)";
+                colorPickerSetting.Description = "The shader color applied when using the Custom skybox, during the in-game Night phase";
+                colorPickerSetting.DefaultValue = "#FFFFFF";
+                colorPickerSetting.AvailableInGame = true;
+                colorPickerSetting.Available = (Settings.SettingsCache.ContainsValue("Random") || ((string)Settings.SettingsCache.GetValue("Default Skybox", null) == "None" && ((string)Settings.SettingsCache.GetValue("Day Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Dawn Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Dusk Skybox", null) == "Custom")) || (string)Settings.SettingsCache.GetValue("Default Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Night Skybox", null) == "Custom" || (string)Settings.SettingsCache.GetValue("Apocalypse Skybox", null) == "Custom");
+                colorPickerSetting.OnChanged = delegate (Color s)
+                {
+                    Settings.ColorCache.SetValue("Custom Skybox Shader Color (Night)", s);
+                    Settings.UpdateSky();
+                };
+                return colorPickerSetting;
+            }
+        }
 
         // Token: 0x1700001C RID: 28
         // (get) Token: 0x0600003B RID: 59
@@ -849,7 +885,8 @@ namespace DayNight
             "Winter",
             "Greek",
             "Mafia",
-            "Void"
+            "Void",
+            "Custom"
         };
 
         // Token: 0x04000010 RID: 16
@@ -1012,6 +1049,14 @@ namespace DayNight
                 Color.white
             },
             {
+                "Custom Skybox Shader Color",
+                Color.white
+            },
+            {
+                "Custom Skybox Shader Color (Night)",
+                Color.white
+            },
+            {
                 "Jail Cell Shader Color",
                 Color.white
             }
@@ -1023,5 +1068,8 @@ namespace DayNight
             "Time in Seconds",
             "Phase Change"
         };
+
+        public static string customClouds = "Day";
+        public static string customCelestialObject = "Sun";
     }
 }

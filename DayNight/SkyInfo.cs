@@ -74,6 +74,10 @@ namespace DayNight
                                 {
                                     return SkyInfo.SkyType.Winter;
                                 }
+                                if (c3 == 'C' && s == "Custom")
+                                {
+                                    return SkyInfo.SkyType.Custom;
+                                }
                             }
                             else if (s == "Random")
                             {
@@ -313,6 +317,15 @@ namespace DayNight
                         }
                         return color11;
                     }
+                case SkyInfo.SkyType.Custom:
+                    {
+                        Color color11 = Settings.ColorCache.GetValue("Custom Skybox Shader Color");
+                        if (SkyInfo.Phase == "Night")
+                        {
+                            return Settings.ColorCache.GetValue("Custom Skybox Shader Color (Night)");
+                        }
+                        return color11;
+                    }
                 default:
                     return Color.white;
             }
@@ -348,7 +361,8 @@ namespace DayNight
             Winter,
             Greek,
             Mafia,
-            Void
+            Void,
+            Custom
         }
     }
 }
